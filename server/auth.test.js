@@ -6,7 +6,9 @@ const app = require('./start')
 
 const alice = {
   username: 'alice@secrets.org',
-  password: '12345'
+  password: '12345',
+  firstName: 'alice',
+  lastName: 'wonderland'
 }
 
 describe('/api/auth', () => {
@@ -15,7 +17,9 @@ describe('/api/auth', () => {
       .then(() =>
         User.create(
           {email: alice.username,
-          password: alice.password
+          password: alice.password,
+          firstName: alice.firstName,
+          lastName: alice.lastName
         })
       )
   )

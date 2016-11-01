@@ -5,6 +5,11 @@ const fs = require('fs')
 const {join} = require('path')
 const pkg = require('./package.json')
 
+
+const nameError =
+`*******************************************************************
+ You need to give your app a proper name.`
+
 const appLink = join(__dirname, 'node_modules', 'APP')
 
 const symlinkError = error =>
@@ -21,14 +26,14 @@ You might try this:
 
   rm ${appLink}
 
-Then run me again.  
+Then run me again.
 
   ~ xoxo, bones
 ********************************************************************`
 
 function makeAppSymlink() {
   console.log(`Linking '${appLink}' to '..' ...`)
-  try {    
+  try {
     fs.unlinkSync(appLink)
     fs.linkSync(appLink, '..')
   } catch (error) {
@@ -49,19 +54,25 @@ function checkAppSymlink() {
   }
 }
 
-const nameError =
-`*******************************************************************
- You need to give your app a proper name.
+// const nameError =
+// `*******************************************************************
+//  You need to give your app a proper name.
 
- The package name
+//  The package name
 
-    ${pkg.name}
+//     ${pkg.name}
 
-isn't valid. If you don't change it, things won't work right.
+// isn't valid. If you don't change it, things won't work right.
 
-Please change it in ${__dirname}/package.json
-  ~ xoxo, bones
-********************************************************************`
+// Please change it in ${__dirname}/package.json
+//   ~ xoxo, bones
+// ********************************************************************`
+
+
+// const reasonableName = /^[[a-z0-9]\-]+$/
+// if (!reasonableName.test(pkg.name)) {
+//   console.error(chalk.red(nameError))
+// }
 
 const reasonableName = /^[a-z0-9\-_]+$/
 if (!reasonableName.test(pkg.name)) {
