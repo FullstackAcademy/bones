@@ -6,6 +6,7 @@ const db = require('APP/db')
 epilogue.initialize({app: api, sequelize: db})
 
 const mustBeLoggedIn = (req, res, context) => {
+  //console.log("LOGIN USER1",req);
   if (!req.user) {
     res.status(401).send('You must be logged in')
     return context.stop
@@ -15,15 +16,15 @@ const mustBeLoggedIn = (req, res, context) => {
 }
 
 const selfOnly = action => (req, res, context) => {
-  if (req.params.id !== req.user.id) {
+  if (req.params.id !== req.user.id && !req.user.isAdmin) {
     res.status(403).send(`You can only ${action} yourself.`)
     return context.stop
   }
-  return context.continue  
+  return context.continue
 }
 
 const forbidden = message => (req, res, context) => {
-  res.status(403).send(message)
+  if(!req.user.isAdmin) res.status(403).send(message)
   return context.stop
 }
 
