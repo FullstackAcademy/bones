@@ -1,0 +1,153 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+nav {
+  width: 100%;
+}
+
+select {
+  background-color: #dedede;
+  border-radius: 16px;
+  height: 32px;
+  padding: 0 12px;
+  border: none;
+}
+
+h1 {
+  font-size: 40px;
+  margin: 0 0 12px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+#nav-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+#nav-top img {
+  max-width: 350px;
+}
+
+#main-menu {
+  width: 100%;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  display: inline-block;
+  padding: 0 1rem;
+}
+
+nav ul li:last-child{
+  padding-left: 0;
+}
+
+#main-menu ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+#main-menu ul li:last-child {
+  margin-left: auto;
+}
+
+#login form {
+  padding: 1rem;
+}
+
+footer {
+  width: 100%;
+  padding: 0 1rem;
+  border-top: 1px #000 solid;
+}
+
+.mdl-card__media img {
+  margin: auto;
+  display: block;
+}
+
+.review-card {
+  width: 100%;
+  min-height: 150px;
+}
+.review-card .mdl-card__title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-card .mdl-card__actions {
+  text-align: right;
+}
+
+.review-form {
+  padding-top: 1rem;
+}
+
+.review-form textarea {
+  width: 100%;
+  height: 15rem;
+}
+
+#product {
+  width: 80%;
+  max-width: 1024px;
+}
+
+#product-right>div:nth-child(2)>div:last-child {
+  max-height: 36vh;
+  overflow: scroll;
+  padding: .5rem;
+  border: 1px #E0E0E0 solid;
+}
+
+.below-tabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5rem;
+}
+
+.below-tabs select {
+  display: inline-block;
+  margin: .5rem;
+}
+
+#productsTable img,
+#celebs img {
+  max-height: 250px;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+  }
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
