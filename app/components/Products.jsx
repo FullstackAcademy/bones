@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router';
 import axios from 'axios';
 
 const testArr = [{title: 'test'}];
@@ -27,6 +28,7 @@ export default class Products extends Component {
     const products = this.state.products && this.state.products.map(product => {
       return (
         <tr key={product.id}>
+        <Link to={`/products/${product.id}`}>
         <td> {product.title} </td> 
         <td> {product.category.join(', ')} </td>
         <td> {product.photo_url} </td>
@@ -34,6 +36,7 @@ export default class Products extends Component {
         <td> {product.description} </td>
         <td> {product.availability} </td>
         <td> {product.inventory} </td>
+        </Link>
         </tr>
       )
     });
