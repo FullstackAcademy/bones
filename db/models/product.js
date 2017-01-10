@@ -5,13 +5,21 @@ const Product = db.define('products', {
 	title: Sequelize.STRING,
 	brand: Sequelize.STRING,
 	category: Sequelize.ENUM(
-		'paint', 'prep', 'brushes', 'cleanup'
+		'paint', 'prep', 'painting tools', 'cleanup', 'safety'
 	),
 	description: Sequelize.STRING,
 	size: Sequelize.STRING,
 	unitPrice: Sequelize.FLOAT,
 	company: Sequelize.STRING,
-	SKU: Sequelize.STRING
+	SKU: Sequelize.STRING,
+	inventoryQuantity: Sequelize.INTEGER,
+	photoUrl: {
+		type: Sequelize.STRING,
+		defaultValue: 'https://www.phactual.com/wp-content/uploads/2015/05/006-bill-murray-theredlist-5-times-bill-murray-won-at-life-the-only-way-bill-murray-can.jpeg',
+		validate: {
+			isUrl: true
+		}
+	}
 }, {
         getterMethods: {
             starRating: function() {

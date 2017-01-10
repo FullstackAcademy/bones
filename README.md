@@ -154,6 +154,8 @@ As you work on your data models, please consider the types of data that you will
 #Users
 -Users must have a valid email address
 -Users email must be unique
+-Users must have username
+-Users must have a password
 
 #Order
 -Orders  must belong to a user OR guest session (authenticated vs unauthenticated)
