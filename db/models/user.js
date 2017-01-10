@@ -5,7 +5,7 @@ const Sequelize = require('sequelize')
 const db = require('APP/db')
 
 const User = db.define('users', {
-  name: Sequelize.STRING,  
+  name: Sequelize.STRING,
   email: {
     type: Sequelize.STRING,
     validate: {
@@ -30,7 +30,7 @@ const User = db.define('users', {
           (err, result) =>
             err ? reject(err) : resolve(result))
         )
-    }    
+    }
   }
 })
 
