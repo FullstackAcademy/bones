@@ -19,7 +19,7 @@ const OAuth = db.define('oauths', {
   // The whole profile as JSON
   profileJson: Sequelize.JSON,
 }, {
-	indexes: [{fields: ['uid'], unique: true,}],
+	indexes: [{fields: ['uid'], unique: true}],
 })
 
 OAuth.V2 = (accessToken, refreshToken, profile, done) =>
