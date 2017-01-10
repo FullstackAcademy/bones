@@ -47,4 +47,13 @@ function setEmailAndPassword(user) {
   )
 }
 
-module.exports = User
+module.exports = User;
+
+
+
+users_id (pk) INTEGER 
+email STRING  no
+isAdmin BOOLEAN no
+googleId  STRING  yes
+facebookId  STRING  yes
+password  STRING  yes
