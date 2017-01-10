@@ -9,16 +9,27 @@ describe('User', () => {
   before('wait for the db', () => db.didSync)
 
   describe('authenticate(plaintext: String) ~> Boolean', () => {
+
     it('resolves true if the password matches', () =>
-      User.create({ password: 'ok' })
+      User.create({
+		  password: 'ok',
+		  userName: 'jessieG',
+		  email: 'jessig@gmail.com'
+	   })
         .then(user => user.authenticate('ok'))
-        .then(result => expect(result).to.be.true))
+        .then(result => expect(result).to.be.true)
+	)
 
     it("resolves false if the password doesn't match", () =>
-      User.create({ password: 'ok' })
+      User.create({
+			password: 'ok',
+			userName: 'bsg',
+			email: 'bubbaShrimp@gump.com'
+		 })
         .then(user => user.authenticate('not ok'))
-        .then(result => expect(result).to.be.false))
-	})
+        .then(result => expect(result).to.be.false)
+	)
+})
 
 	it('has an email', () =>
       User.create({
@@ -69,7 +80,16 @@ describe('User', () => {
 	  .catch( console.error)
 	)
 
-	it("has a password", () =>
+	it('requires a username', () =>
+	  User.create({
+		  password: 'ok',
+		  email: 'tester33@gmail.com'
+		})
+		.then(user => expect(user).to.not.exist)
+		.catch( (err) => expect(err).to.exist)
+	)
+
+	it('has a password', () =>
 	User.create({
 		password: 'ok',
 		email: 'tester24@gmail.com',
@@ -77,6 +97,15 @@ describe('User', () => {
 	  })
 	  .then(user => expect(user.password).to.exist)
 	  .catch( console.error)
+	)
+
+	it('requires a password', () =>
+	  User.create({
+		  email: 'tester33@gmail.com',
+		  userName: 'smurfDaddy'
+		})
+		.then(user => expect(user).to.not.exist)
+		.catch( (err) => expect(err).to.exist)
 	)
 
 })
