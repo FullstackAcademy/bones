@@ -8,6 +8,7 @@ import store from './store'
 import Jokes from './components/Jokes'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
+import Signup from './components/Signup'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -16,6 +17,7 @@ const ExampleApp = connect(
     <div>
       <nav>
         {user ? <WhoAmI/> : <Login/>}
+        <Signup/>
       </nav> 
       {children}
     </div>

@@ -120,6 +120,17 @@ passport.use(new (require('passport-local').Strategy) (
 
 auth.get('/whoami', (req, res) => res.send(req.user))
 
+auth.post('/signup', (req, res, next) => {
+  User.findOrCreate(req.body)
+  .spread(user => {
+    req.login(user, (err) => {
+      if(err) next(err);
+      else res.sendStatus(201);
+    });
+  })
+  .catch(next);
+});
+
 auth.post('/:strategy/login', (req, res, next) =>
   passport.authenticate(req.params.strategy, {
     successRedirect: '/'
