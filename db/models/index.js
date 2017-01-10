@@ -31,4 +31,4 @@ Order.hasMany(LineItem);
 // creates 'orderId' on line items
 
 // associations complete, expose each model
-module.exports = {User, Order, Product, LineItem};
+module.exports = {User, Order, Product, LineItem, Review};

@@ -10,9 +10,15 @@ const Review = db.define('reviews', {
     allowNull: false
   },
   content: {
-    type: Sequelize.TEXT,
-    allowNull: false
-  },
+   type: Sequelize.TEXT,
+   validate: {
+     minLength: function(value) {
+       if(value.length < 10) {
+         throw new Error ('Reviews must be at least 10 characters long')
+       }
+     }
+   }
+ },
   status: {
     type: Sequelize.ENUM('open', 'closed')
   },
