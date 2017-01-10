@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize')
 const db = require('APP/db')
 const User = require('APP/db').User
+const LineItem = require('APP/db').LineItem
+const Product = require('APP/db').Product
 
 const Order = db.define('orders', {
 
@@ -9,7 +11,10 @@ const Order = db.define('orders', {
 	),
 	datePurchased: Sequelize.DATE,
 	dateDelivered: Sequelize.DATE,
-	totalCost: Sequelize.FLOAT,
+	totalCost: {
+		type: Sequelize.FLOAT,
+		defaultValue: 0
+	},
 
 	shipping1: Sequelize.STRING,
 	shipping2: Sequelize.STRING,
@@ -25,14 +30,21 @@ const Order = db.define('orders', {
 	billingSt:  Sequelize.STRING,
 	billingZip:  Sequelize.STRING,
 
+	customerType:Sequelize.ENUM(
+			'guest', 'registered'
+		),
 	customer: {
 		type: Sequelize.ARRAY(Sequelize.STRING),
-		get: function() {
-			User.findById(this.userId)
-			.then(foundUser => this.setDataValue('customer', foundUser))
-			//this is placing the entire object on this column, for testing
-			.catch(console.error)
-		}
+		// get: function() {
+		// 	User.findById(this.userId)
+		// 	.then(foundUser => this.setDataValue('customer', foundUser))
+		// 	//this is placing the entire object on this column, for testing
+		// 	.catch(console.error)
+		// }
+	},
+	lineItems: {
+		type: Sequelize.ARRAY(Sequelize.STRING),
+		defaultValue: []
 	}
 
 },
@@ -46,7 +58,14 @@ const Order = db.define('orders', {
   },
 
   setterMethods: {
-    //
+    totalTheCost: function(){
+    	const lineItems = this.getDataValue('lineItems');
+    	let sum = 0;
+    	for(var i = 0; i<lineItems.length; i++){
+    		sum += lineItems[0].subtotalCost;
+    	}
+    	this.setDataValue("totalCost", sum);
+    }
   },
 
   classMethods: {
