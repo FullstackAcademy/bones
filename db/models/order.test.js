@@ -28,21 +28,20 @@ describe('Order', () => {
         .then(result => expect(result).to.be.false)) // to be 1
 
 	it('captures product order quantity', () =>
-    //   User.create({ password: 'ok' })
-    //     .then(order => order.authenticate('not ok'))
-    //     .then(result => expect(result).to.be.false))
-  })
+		{}
+	)
+})
 
   describe('order status', () => {
-	it('price does not change', () =>
+	it('price does not change', () => {}
 	//   User.create({ password: 'ok' })
 	// 	.then(order => order.authenticate('ok'))
 	// 	.then(result => expect(result).to.be.true))
+	)
 	it('can have cart or purchased status', () =>
-	//   User.create({ password: 'ok' })
-	// 	.then(order => order.authenticate('ok'))
-	// 	.then(result => expect(result).to.be.true))
-  });
+	{}
+	)
+	});
 
 })
 
