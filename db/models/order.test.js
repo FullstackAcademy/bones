@@ -1,21 +1,23 @@
 'use strict'
 
+
 const db = require('APP/db')
-const LineItem = require('APP/db').LineItem
-const Product = require('APP/db').Product
+//const LineItem = require('APP/db').LineItem
+//const Product = require('APP/db').Product
+const Product = require('./product')
+const LineItem = require('./lineItem')
 const Order = require('./order')
+const User = require('./user')
 const {expect} = require('chai')
 
-describe('Order tests', () => {
+describe('Order suite', () => {
 
 	before('wait for the db', () => db.didSync)
 
-	//beforeEach get user models, seed orders
-	describe('create new order with line item', () => {
+	let product, newLineItem, newUser, newOrder
+	beforeEach( function () {
 
-		it('belongs to a user or guest session', () => {
-
-		const productPromise = Product.create({
+		product  = Product.create({
 			title: 'Ben Semi-Gloss Purple',
 			brand: 'BenjaminMoore',
 			category: 'paint',
@@ -24,7 +26,7 @@ describe('Order tests', () => {
 			inventoryQuantity: 2
 		})
 
-	  	const lineItemPromise = LineItem.create({
+		newLineItem = LineItem.create({
 			productDetail: product.title,
 			count: 3,
 			unitCost: product.unitPrice,
@@ -32,41 +34,49 @@ describe('Order tests', () => {
 			productId: product.id
 		})
 
-		const userPromise = User.create({
-			password: 'ok',
+		newUser = User.create({
+			password: 'okiedokie',
 			email: 'testingMe@gmail.com',
 			userName: 'smurfMan'
 		})
 
 		// create the product and user, then the lineItem. then create the Order.
 
-		Promise.all(productPromise, lineItemPromise, userPromise)
-		.then ( resultsArray => {
-			Order.create({
-				customer: resultsArray[2],
-				lineItemDetails: resultsArray[1],
+		// newOrder = Order.create({
+		// 	customer: newUser,
+		// 	lineItemDetails: [newLineItem],
+		// 	status: 'cart'
+		// })
 
-			})
-		})
+	})
+
+	describe('create new order with line item', () => {
+
+		it('belongs to a user or guest session', () => {
+			expect(newOrder.customer).to.exist;
 
 
-      })
-
+		});
 
 		it('totals the cost', () => {
 			Order.create({
-				lineItems: [lineItem],
+				lineItemDetails: [newLineItem],
 				userId: 1,
 				status: 'cart',
 			}) // set up fake order then test it
 			.then(createdOrder => {
-			  expect(createdOrder.totalCost).to.be.above(0)
+				expect(createdOrder.totalCost).to.be.above(0)
 			})
 			.catch(console.error)
-		})
+		});
 
-  })
-  });
+	});
+
+
+})
+
+	//const product, newLineItem, newUser;
+	//beforeEach get user models, seed orders
 
 //   describe('contains line items capturing product detail', () => {
 //     it('captures product price', () =>

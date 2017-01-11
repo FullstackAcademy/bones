@@ -1,8 +1,10 @@
 const Sequelize = require('sequelize')
 const db = require('APP/db')
-const User = require('APP/db').User
-const LineItem = require('APP/db').LineItem
-const Product = require('APP/db').Product
+//const User = require('APP/db').User
+const User = require('./user')
+const Product = require('./product')
+const LineItem = require('./lineItem')
+// we noticed the symlink wasn't importing properly?
 
 const Order = db.define('orders', {
 
@@ -52,6 +54,11 @@ const Order = db.define('orders', {
 // methods?
 {
   hooks: {
+	  beforeUpdate: function() {
+		  const lineItems = this.getDataValue('lineItemDetails');
+		  let sum = lineItems.reduce( (prev, current) =>  prev.subtotalCost + current.subtotalCost)
+		  this.setDataValue('totalCost', sum);
+	  }
 	  //
   },
   getterMethods: {
@@ -60,12 +67,6 @@ const Order = db.define('orders', {
 
   setterMethods: {
     totalTheCost: function(){
-		const lineItems = this.getDataValue('lineItems');
-		let sum = 0;
-		for (var i = 0; i < lineItems.length; i++){
-			sum += lineItems[0].subtotalCost;
-		}
-		this.setDataValue('totalCost', sum);
     }
   },
 
