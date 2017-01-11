@@ -55,7 +55,7 @@ describe('User', () => {
 		const user1Promise = User.create({
 			password: 'ok',
 			email: 'tester13@gmail.com',
-			userName: 'smurfBalls'
+			userName: 'smurfBallsHoney'
 		})
 		const user2Promise = User.create({
 			password: 'ok',
@@ -74,7 +74,7 @@ describe('User', () => {
 	User.create({
 		password: 'ok',
 		email: 'tester1@gmail.com',
-		userName: 'smurfBalls'
+		userName: 'smurfBalls1'
 	  })
 	  .then(user => expect(user.userName).to.exist)
 	  .catch( console.error)
@@ -83,7 +83,7 @@ describe('User', () => {
 	it('requires a username', () => {
 	  return User.create({
 		  password: 'ok',
-		  email: 'tester33@gmail.com'
+		  email: 'tester99@gmail.com'
 		})
 		.then(user => expect(user).to.not.exist)
 		.catch(result => expect(result).to.be.an.instanceOf(Error))
@@ -101,7 +101,7 @@ describe('User', () => {
 
 	it('requires a password', () =>
 	  User.create({
-		  email: 'tester33@gmail.com',
+		  email: '21@gmail.com',
 		  userName: 'smurfDaddy'
 		})
 		.then(user => expect(user).to.not.exist)
