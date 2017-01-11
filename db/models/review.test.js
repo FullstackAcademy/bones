@@ -35,7 +35,7 @@ describe('Review', () => {
    })
 
    it("Reviews Belongs to User", () => {
-     let creatingUser = User.create({name: "Test", email: 'skuo314@gmail.com'});
+     let creatingUser = User.create({userName: "Test", email: 'skuo314@gmail.com', password: 'password'});
      let creatingReview = Review.create({title: 'Review Test 2', content: 'this is some content', numStars: '3'})
      return Promise.all([creatingUser, creatingReview])
      	.then(([createdUser, createdReview]) => {
@@ -54,7 +54,7 @@ describe('Review', () => {
      		return User.findById(user_id)
      	})
      	.then(foundUser => {
-     		expect(foundUser.name).to.equal('Test')
+     		expect(foundUser.userName).to.equal('Test')
      	})
 
    })

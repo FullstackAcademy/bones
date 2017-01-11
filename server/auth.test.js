@@ -17,8 +17,9 @@ describe('/api/auth', () => {
         User.create(
           {userName: alice.userName,
             email: alice.email,
-          password: alice.password
+          password: alice.password,
         })
+        .then(createdUser => console.log('Created user:', createdUser.userName))
       )
   )
 
@@ -26,7 +27,7 @@ describe('/api/auth', () => {
     it('succeeds with a valid username and password', () =>
       request(app)
         .post('/api/auth/local/login')
-        .send(alice)
+        .send({username: alice.email, password: alice.password})
         .expect(302)
         .expect('Set-Cookie', /session=.*/)
         .expect('Location', '/')
@@ -35,7 +36,7 @@ describe('/api/auth', () => {
     it('fails with an invalid username and password', () =>
       request(app)
         .post('/api/auth/local/login')
-        .send({userName: alice.userName, email: alice.email, password: 'wrong'})
+        .send({username: alice.email, password: 'wrong'})
         .expect(401)
       )
   })
@@ -45,14 +46,14 @@ describe('/api/auth', () => {
       const agent = request.agent(app)
       before('log in', () => agent
         .post('/api/auth/local/login')
-        .send(alice))
+        .send({username: alice.email, password: alice.password}))
 
       it('responds with the currently logged in user', () =>
         agent.get('/api/auth/whoami')
           .set('Accept', 'application/json')
           .expect(200)
           .then(res => expect(res.body).to.contain({
-            email: alice.userName
+            email: alice.email
           }))
       )
     })
