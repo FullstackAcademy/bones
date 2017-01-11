@@ -78,7 +78,7 @@ describe('LineItem', () => {
           expect(foundLineItem.unitCost).to.equal(5)
         })
    })
-   it.only("Modifies the count correctly", () => {
+   it("Modifies the count correctly", () => {
      let creatingProduct = Product.create({title: "Test", unitPrice: 5});
      let creatingLineItem = LineItem.create({})
      return Promise.all([creatingProduct, creatingLineItem])
