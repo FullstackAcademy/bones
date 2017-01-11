@@ -6,58 +6,68 @@ const Product = require('APP/db').Product
 const Order = require('./order')
 const {expect} = require('chai')
 
-describe('Order', () => {
+describe('Order tests', () => {
 
-  before('wait for the db', () => db.didSync)
+	before('wait for the db', () => db.didSync)
 
-  //beforeEach get user models, seed orders
-  describe('belongs to order', () => {
-      let product, lineItem
-      
-      beforeEach(function() {
-        return Product.create({
-          title: 'Ben Semi-Gloss Purple',
-          brand: 'BenjaminMoore',
-          category: 'paint',
-          description: 'On a sunday morning, imbibe yourself in our spendid colors with amazing catalogue copy',
-          unitPrice: 24.99,
-          inventoryQuantity: 2
-        })
-        .then(createdProduct => {
-          product = createdProduct
-        })
-        .catch(console.error);
-      });
+	//beforeEach get user models, seed orders
+	describe('create new order with line item', () => {
 
-      beforeEach(function() {
-        return LineItem.create({
-          productDetail: product.title,
-          count: 3,
-          unitCost: product.unitPrice,
-          subtotalCost: product.unitPrice*3,
-          productId: product.id 
-        })
-        .then(createdLI => {
-          lineItem = createdLI
-        })
-        .catch(console.error)
+		it('belongs to a user or guest session', () => {
+
+		const productPromise = Product.create({
+			title: 'Ben Semi-Gloss Purple',
+			brand: 'BenjaminMoore',
+			category: 'paint',
+			description: 'Every sunday morning, imbibe yourself in our spendlid colors with amazing catalogue copy',
+			unitPrice: 24.99,
+			inventoryQuantity: 2
+		})
+
+	  	const lineItemPromise = LineItem.create({
+			productDetail: product.title,
+			count: 3,
+			unitCost: product.unitPrice,
+			subtotalCost: product.unitPrice * 3,
+			productId: product.id
+		})
+
+		const userPromise = User.create({
+			password: 'ok',
+			email: 'testingMe@gmail.com',
+			userName: 'smurfMan'
+		})
+
+		// create the product and user, then the lineItem. then create the Order.
+
+		Promise.all(productPromise, lineItemPromise, userPromise)
+		.then ( resultsArray => {
+			Order.create({
+				customer: resultsArray[2],
+				lineItemDetails: resultsArray[1],
+
+			})
+		})
+
+
       })
 
-    it('totals the cost', () => {
-      Order.create({ 
-         lineItems: [lineItem],
-         userId: 1,
-         status: 'cart',
-      }) // set up fake order then test it
-       .then(createdOrder => {
-          expect(createdOrder.totalCost).to.be.above(0)
-        }) 
-        .catch(console.error)
-    })
+
+		it('totals the cost', () => {
+			Order.create({
+				lineItems: [lineItem],
+				userId: 1,
+				status: 'cart',
+			}) // set up fake order then test it
+			.then(createdOrder => {
+			  expect(createdOrder.totalCost).to.be.above(0)
+			})
+			.catch(console.error)
+		})
 
   })
+  });
 
-})
 //   describe('contains line items capturing product detail', () => {
 //     it('captures product price', () =>
 //       Order.create({ password: 'ok' })
@@ -87,12 +97,11 @@ describe('Order', () => {
 
 
 // Associations: "must belong to a user or guest session"
-// Must contain line items that capture price, current product ID and quantity
-// if user completes an order that order should keep the price of the item at the time when they checked out even if the price of the product later changes
-
-//#Order
-/*
--Orders  must belong to a user OR guest session (authenticated vs unauthenticated)
--Orders must contain line items that capture the price, current product ID and quantity
--If a user completes an order, that order should keep the price of the item at the time when they checked out even if the price of the product later changes
-*/
+// // Must contain line items that capture price, current product ID and quantity
+// // if user completes an order that order should keep the price of the item at the time when they checked out even if the price of the product later changes
+//
+// //#Order
+// /*
+// -Orders  must belong to a user OR guest session (authenticated vs unauthenticated)
+// -Orders must contain line items that capture the price, current product ID and quantity
+// -If a user completes an order, that order should keep the price of the item at the time when they checked out even if the price of the product later changes

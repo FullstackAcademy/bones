@@ -30,7 +30,7 @@ const Order = db.define('orders', {
 	billingSt:  Sequelize.STRING,
 	billingZip:  Sequelize.STRING,
 
-	customerType:Sequelize.ENUM(
+	customerType: Sequelize.ENUM(
 			'guest', 'registered'
 		),
 	customer: {
@@ -42,7 +42,8 @@ const Order = db.define('orders', {
 		// 	.catch(console.error)
 		// }
 	},
-	lineItems: {
+	// this holds all the line items
+	lineItemDetails: {
 		type: Sequelize.ARRAY(Sequelize.STRING),
 		defaultValue: []
 	}
@@ -59,12 +60,12 @@ const Order = db.define('orders', {
 
   setterMethods: {
     totalTheCost: function(){
-    	const lineItems = this.getDataValue('lineItems');
-    	let sum = 0;
-    	for(var i = 0; i<lineItems.length; i++){
-    		sum += lineItems[0].subtotalCost;
-    	}
-    	this.setDataValue("totalCost", sum);
+		const lineItems = this.getDataValue('lineItems');
+		let sum = 0;
+		for (var i = 0; i < lineItems.length; i++){
+			sum += lineItems[0].subtotalCost;
+		}
+		this.setDataValue('totalCost', sum);
     }
   },
 

@@ -59,13 +59,13 @@ describe('User', () => {
 		})
 		const user2Promise = User.create({
 			password: 'ok',
-			email: 'tester13@gmail.com',
+			email: 'tester156@gmail.com',
 			userName: 'smurfBallsTheBrother'
 		})
 
 		Promise.all(user1Promise, user2Promise)
 		.then( resultsArray => expect(resultsArray.length).to.equal(1))
-		.catch( (err) => expect(err).to.exist);
+		.catch(result => expect(result).to.be.an.instanceOf(Error))
 
 	})
 
@@ -80,24 +80,24 @@ describe('User', () => {
 	  .catch( console.error)
 	)
 
-	it('requires a username', () =>
-	  User.create({
+	it('requires a username', () => {
+	  return User.create({
 		  password: 'ok',
 		  email: 'tester33@gmail.com'
 		})
 		.then(user => expect(user).to.not.exist)
-		.catch( (err) => expect(err).to.exist)
-	)
+		.catch(result => expect(result).to.be.an.instanceOf(Error))
+	})
 
-	it('has a password', () =>
-	User.create({
+	it('has a password', () => {
+	return User.create({
 		password: 'ok',
 		email: 'tester24@gmail.com',
 		userName: 'smurfBalls2'
 	  })
 	  .then(user => expect(user.password).to.exist)
 	  .catch( console.error)
-	)
+  })
 
 	it('requires a password', () =>
 	  User.create({
@@ -105,7 +105,7 @@ describe('User', () => {
 		  userName: 'smurfDaddy'
 		})
 		.then(user => expect(user).to.not.exist)
-		.catch( (err) => expect(err).to.exist)
+		.catch(result => expect(result).to.be.an.instanceOf(Error))
 	)
 
 })
