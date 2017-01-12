@@ -41,14 +41,15 @@ describe.only('/api/users', () => {
    
 
     it('PUT updates a user', () => {
-      request(app)
+      return request(app)
       .put(`/api/users/1`)
       .send({
-        userName: 'Bubba'
+        userName: 'Storm'
       })
-      .redirects(1)
+      // .redirects(1)
       .then(res => {
-        expect(res.body).to.contain({username: 'Bubba'})
+        console.log("res from users.test", res.body)
+        expect(res.body).to.contain({userName: 'Storm'})
       })
     })    
   })

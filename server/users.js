@@ -33,7 +33,10 @@ module.exports = require('express').Router()
 		.catch(next))
 	.put('/:id', (req, res, next) => {
 		req.requestedUser.update(req.body)
-		.then(updatedUser => res.status(204).json(updatedUser))
+		.then(updatedUser => {
+			console.log(updatedUser.userName)
+			res.status(204).json(updatedUser)
+		})
 		.catch(next)	
 	})
 	// .delete('/:id', function (req, res, next) {
