@@ -20,9 +20,10 @@ const onLoginEnter = function() {
 ReactDOM.render (
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={App} />
+      <Route path="/" component={App}>
         <Route path="/login" component={Login} />
         <Route path="/paint" component={PaintCatalog} />
+      </Route>
     </Router>
   </Provider>,
   document.getElementById('main')
