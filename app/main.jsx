@@ -10,8 +10,11 @@ import store from './store'
 import Login from './components/Login'
 import loginContainer from './containers/loginContainer'
 import PaintCatalog from './components/PaintCatalog'
+<<<<<<< HEAD
+=======
 
 import axios from 'axios'
+>>>>>>> master
 
 const onLoginEnter = function() {
 
