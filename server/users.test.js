@@ -4,7 +4,7 @@ const db = require('APP/db')
 const User = require('APP/db/models/user')
 const app = require('./start')
 
-describe.only('/api/users', () => {
+describe('/api/users', () => {
   before('wait for the db', () => db.didSync)
   after('synchronize and clear database', () => db.sync({force: true}));
 
