@@ -4,7 +4,7 @@ const db = require('APP/db')
 const Product = require('APP/db/models/product')
 const app = require('./start')
 
-describe('/api/products', () => {
+describe.only('/api/products', () => {
 	before('wait for the db', () => db.didSync)
   	after('synchronize and clear database', () => db.sync({force: true}));
 
