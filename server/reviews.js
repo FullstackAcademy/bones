@@ -8,15 +8,12 @@ const Review = db.model('reviews')
 const Router = require('express').Router()
 
 
-
-Router.param('id',(req,res,next,id)=>{
-  console.log(id)
-  if(isNaN(id)) res.sendStatus(500)
+Router.param('id', (req, res, next, id) => {
+  if (isNaN(id)) res.sendStatus(500)
   else {
     Review.findById(id)
     .then(review=>{
-      console.log("test")
-      if(!review) res.sendStatus(404)
+      if (!review) res.sendStatus(404)
       next()
       return null;
     })
@@ -28,7 +25,6 @@ Router.param('id',(req,res,next,id)=>{
 Router.get('/',(req,res,next)=>{
   Review.findAll()
   .then(reviews=> {
-    console.log(reviews)
     res.json(reviews)})
 })
 
