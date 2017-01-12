@@ -4,7 +4,7 @@ const db = require('APP/db')
 const User = require('APP/db/models/user')
 const app = require('./start')
 
-describe('/api/users', () => {
+describe.only('/api/users', () => {
   describe('when not logged in', () => {
     it('GET /:id fails 401 (Unauthorized)', () =>
       request(app)
@@ -35,11 +35,26 @@ describe('/api/users', () => {
           email: 'eve@interloper.com'
         }))
     )
+  })
+
+  describe('when logged in', () => {
+   
 
     it('PUT updates a user', () => {
       request(app)
-        .put('/api/users')
-    })
-
+      .put(`/api/users/1`)
+      .send({
+        userName: 'Bubba'
+      })
+      .redirects(1)
+      .then(res => {
+        console.log("asdfasdasdfasdkjfdsajkfsdjkhafsd") 
+        expect(res.body).to.contain({
+        userName: 'Ben'
+      })
+      })
+    })    
   })
+
+
 })
