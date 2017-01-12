@@ -5,5 +5,9 @@
 // to get access to the User model.
 
 const User = require('./user')
+const Product = require('./product')
+const Inventory = require('./inventory')
 
-module.exports = {User}
+Product.hasMany(Inventory)
+
+module.exports = {User, Product, Inventory}

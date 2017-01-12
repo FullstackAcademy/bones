@@ -1,0 +1,161 @@
+@font-face {
+  font-family: "animalApparelFont";
+    src: url("//db.onlinewebfonts.com/t/03def1e825bb29de3582eb1de0bd5b71.eot");
+    src: url("//db.onlinewebfonts.com/t/03def1e825bb29de3582eb1de0bd5b71.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/03def1e825bb29de3582eb1de0bd5b71.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/03def1e825bb29de3582eb1de0bd5b71.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/03def1e825bb29de3582eb1de0bd5b71.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/03def1e825bb29de3582eb1de0bd5b71.svg#Helvetica Neue") format("svg");
+}
+
+body {
+  font-family: "animalApparelFont";
+}
+
+/*~~~~~~~~~HOMEPAGE~~~~~~~~~~~*/
+.home-pic {
+  color: white;
+  height: 300px;
+  margin: -5px;
+}
+
+.promo{
+  background: url("http://www.shunvmall.com/data/out/18/46955447-background-image.png") no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  height: 100%;
+
+
+}
+
+.promo #promo {
+  text-align: left;
+  float: left;
+  font-size: 4em;
+}
+
+.promo #promoCode {
+  text-align: right;
+  float: right;
+  font-size: 2em;
+}
+
+.promo #bottomRow{
+  position: absolute;
+  bottom: 0;
+}
+
+.promo #peopleSale {
+  text-align: left;
+  float: left;
+  font-size: 1.5em;
+
+}
+
+
+
+.promo #dogSale {
+  text-align: right;
+  float: right;
+  font-size: 1.5em;
+}
+
+.women{
+  background: url("https://cdn29.elitedaily.com/content/uploads/2016/05/06103041/@ThalerCarolina_Julio.jpg") no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+
+.men{
+  background: url("https://www.rover.com/blog/wp-content/uploads/2014/12/hoodies-900x540.jpg") no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+
+.dogs{
+  background: url("http://i.imgur.com/6y2PkhZ.png") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+
+.kids{
+  background-image: url("https://s-media-cache-ak0.pinimg.com/originals/b8/94/39/b894391d9725e49a23bbb63e4a966d57.jpg");
+}
+/*~~~~~~~~~NAVBAR~~~~~~~~~~~*/
+.navbar {
+  background-color: white;
+  border: none;
+  margin-bottom: 5px;
+}
+
+.black-bar {
+  background-color: black;
+  border: none;
+  color: white;
+  height: 20px;
+}
+
+.navbar .container {
+  height: 8vh;
+  width: 100%;
+}
+
+.navbar .navbar-collapse {
+  display: table-cell;
+}
+
+a .navbar .dropdown {
+  background-color: pink;
+  vertical-align: middle;
+}
+
+/*Grabbing Logo*/
+.navbar .navbar-brand {
+  color: black;
+  font-family: "animalApparelFont";
+  font-size: 2.6em;
+  font-stretch: ultra-condensed;
+  font-weight: 600;
+  text-align: left;
+}
+
+/*Grabbing search bar text*/
+.navbar .navbar-text {
+  color: black;
+}
+
+/*Removing the hover color*/
+.navbar-default .navbar-nav>li>a {
+  color: black;
+}
+
+.navbar-default .navbar-categories>li>a {
+  font-size: 2em;
+}
+
+/*This craziness is grabbing the product categories in the main navbar*/
+#main > div > div > div > nav:nth-child(3) > div > div.navbar-collapse.collapse > ul{
+  font-size: 2em;
+}
+
+#basic-nav-dropdown {
+  padding: 0;
+}
+
+sup {
+  font-size: 14px;
+  vertical-align: top;
+  top: 0em;
+}

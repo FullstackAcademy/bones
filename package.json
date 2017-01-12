@@ -1,7 +1,7 @@
 {
-  "name": "__BONES_NEEDS_A_NAME__",
+  "name": "animalapparel",
   "version": "0.0.1",
-  "description": "A happy little skeleton.",
+  "description": "An faux ecommerce store selling matching pet and owner clothing.",
   "main": "index.js",
   "scripts": {
     "test": "check-node-version --node '>= 6.7.0' && bin/setup && mocha --compilers js:babel-register app/**/*.test.js app/**/*.test.jsx db/**/*.test.js server/**/*.test.js",
@@ -47,6 +47,7 @@
     "pg-native": "^1.10.0",
     "pretty-error": "^2.0.2",
     "react": "^15.3.2",
+    "react-bootstrap": "^0.30.7",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
     "react-router": "^3.0.0",
