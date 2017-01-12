@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router';
 
 export const Login = ({ login }) => (
   <form onSubmit={evt => {
