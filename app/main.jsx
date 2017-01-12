@@ -8,6 +8,7 @@ import App from './components/app'
 import store from './store'
 import Login from './components/Login'
 import loginContainer from './containers/loginContainer'
+import PaintCatalog from './components/PaintCatalog'
 
 const onLoginEnter = function() {
 
@@ -18,6 +19,7 @@ ReactDOM.render (
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <Route path="/login" component={Login} />
+        <Route path="/paint" component={PaintCatalog} />
       </Route>
     </Router>
   </Provider>,
