@@ -12,6 +12,7 @@ describe('Product tests', () => {
 
 		let testProduct;
 		before('wait for the db', () => db.didSync)
+		after('synchronize and clear database', () => db.sync({force: true}));
 
 		describe('product tests', () => {
 			beforeEach(function() {

@@ -7,6 +7,7 @@ const expect = require('chai').expect
 
 describe('LineItem', () => {
  before('wait for the db', () => db.didSync)
+ after('synchronize and clear database', () => db.sync({force: true}));
  describe('Working Associations', () => {
    it('LineItem belongs to Product', () => {
      let creatingProduct = Product.create({title: "Test"});
