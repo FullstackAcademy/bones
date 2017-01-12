@@ -5,6 +5,9 @@ const User = require('APP/db/models/user')
 const app = require('./start')
 
 describe.only('/api/users', () => {
+  before('wait for the db', () => db.didSync)
+  after('synchronize and clear database', () => db.sync({force: true}));
+
   describe('when not logged in', () => {
     it('GET /:id fails 401 (Unauthorized)', () =>
       request(app)
@@ -46,13 +49,20 @@ describe.only('/api/users', () => {
       .send({
         userName: 'Storm'
       })
-      // .redirects(1)
       .then(res => {
-        console.log("res from users.test", res.body)
         expect(res.body).to.contain({userName: 'Storm'})
       })
     })    
   })
 
-
+describe('deletes a user', () => {
+  it('deletes a user', () => {
+    return request(app)
+    .delete(`/api/users/2`)
+    .send()
+    .then(res => {
+      expect(res.status).to.equal(204)
+      })
+    })
+  })
 })
