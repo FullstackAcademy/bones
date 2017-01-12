@@ -35,5 +35,11 @@ describe('/api/users', () => {
           email: 'eve@interloper.com'
         }))
     )
+
+    it('PUT updates a user', () => {
+      request(app)
+        .put('/api/users')
+    })
+
   })
 })
