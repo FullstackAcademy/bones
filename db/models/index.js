@@ -10,6 +10,7 @@ const Order = require('./order');
 const Product = require('./product');
 const LineItem = require('./lineItem');
 const Review = require('./review');
+const Address = require('./address');
 
 // Product.belongsToMany(Order, {through: 'productOrders'});
 // creates join-table 'productOrders'
@@ -29,6 +30,10 @@ Product.hasMany(LineItem);
 
 Order.hasMany(LineItem);
 // creates 'orderId' on line items
+
+Address.belongsTo(Order);
+
+Address.belongsTo(User);
 
 // associations complete, expose each model
 module.exports = {User, Order, Product, LineItem};
