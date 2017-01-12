@@ -4,6 +4,7 @@ const Order = require('./order')
 const Product = require('./product')
 const LineItem = require('./lineItem')
 const expect = require('chai').expect
+
 describe('LineItem', () => {
  before('wait for the db', () => db.didSync)
  describe('Working Associations', () => {

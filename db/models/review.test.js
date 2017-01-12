@@ -31,11 +31,10 @@ describe('Review', () => {
      	.then(foundProduct => {
      		expect(foundProduct.title).to.equal('Test')
      	})
-
    })
 
    it("Reviews Belongs to User", () => {
-     let creatingUser = User.create({userName: "Test", email: 'skuo314@gmail.com', password: 'password'});
+     let creatingUser = User.create({userName: "Test", email: 'skuo314@gmail.com', password: 'asd'});
      let creatingReview = Review.create({title: 'Review Test 2', content: 'this is some content', numStars: '3'})
      return Promise.all([creatingUser, creatingReview])
      	.then(([createdUser, createdReview]) => {
@@ -56,7 +55,6 @@ describe('Review', () => {
      	.then(foundUser => {
      		expect(foundUser.userName).to.equal('Test')
      	})
-
    })
  })
 
@@ -67,7 +65,6 @@ describe('Review', () => {
      	expect(review).to.not.exist
      })
      	.catch(result => {
-     		console.log('ran')
      		expect(result).to.be.an.instanceOf(Error)
      		expect(result.message).to.contain('Reviews must be at least 10 characters long')
      	})
