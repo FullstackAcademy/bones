@@ -7,7 +7,7 @@ const defaultStyle = {
   marginLeft: 20
 }
 
-export default class Header extends Component {
+export default class Navbar extends Component {
 
   componentDidMount() {
     var element = ReactDOM.findDOMNode(this.refs.dropdown)
