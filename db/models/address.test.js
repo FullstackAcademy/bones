@@ -35,7 +35,7 @@ describe('Address tests', () => {
 	      });		
 		})
 
-		it.only('Address belongs to User', () => {
+		it('Address belongs to User', () => {
 			let creatingAddress = Address.create({
 			billing1: '7',
 			billingSt: '7th st',
