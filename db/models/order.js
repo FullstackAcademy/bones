@@ -5,7 +5,7 @@ const User = require('./user')
 const Product = require('./product')
 const LineItem = require('./lineItem')
 // we noticed the symlink wasn't importing properly?
-
+//Make address models
 const Order = db.define('orders', {
 
 	status: Sequelize.ENUM(
@@ -14,6 +14,7 @@ const Order = db.define('orders', {
 	datePurchased: Sequelize.DATE,
 	dateDelivered: Sequelize.DATE,
 	totalCost: {
+		//calculate on the front end
 		type: Sequelize.FLOAT,
 		defaultValue: 0
 	},
@@ -24,7 +25,6 @@ const Order = db.define('orders', {
 	shippingCity:  Sequelize.STRING,
 	shippingSt:  Sequelize.STRING,
 	shippingZip:  Sequelize.STRING,
-
 	billing1: Sequelize.STRING,
 	billing2: Sequelize.STRING,
 	billing3: Sequelize.STRING,
@@ -53,32 +53,17 @@ const Order = db.define('orders', {
 },
 // methods?
 {
-  hooks: {
-	  beforeUpdate: function() {
-		  const lineItems = this.getDataValue('lineItemDetails');
-		  let sum = lineItems.reduce( (prev, current) =>  prev.subtotalCost + current.subtotalCost)
-		  this.setDataValue('totalCost', sum);
-	  }
-	  //
-  },
-  getterMethods: {
-    //
-  },
-
-  setterMethods: {
-    totalTheCost: function(){
-    }
-  },
-
-  classMethods: {
-	  //
-  },
-
-  instanceMethods: {
-    //set buyer
-
-  }
-
+  // instanceMethods: {
+	 //  beforeUpdate: function(order) {
+		// 	return Product.findAll({where: { id: order.order_id } })
+		// 		.then(products => {
+		// 		})
+		//   // const lineItems = this.getDataValue('lineItemDetails');
+		//   // let sum = lineItems.reduce( (prev, current) =>  prev.subtotalCost + current.subtotalCost)
+		//   // this.setDataValue('totalCost', sum);
+	 //  }
+	 //  //
+  // }
 });
 
 module.exports = Order;
