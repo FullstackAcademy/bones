@@ -9,7 +9,7 @@ const {expect} = require('chai')
 describe('Address tests', () => {
 
 	before('wait for the db', () => db.didSync)
-
+	after('synchronize and clear database', () => db.sync({force: true}));
 	describe('Working Associations', () => {
 
 		it('Address belongs to Order', () => {
@@ -32,10 +32,10 @@ describe('Address tests', () => {
 	      .then(foundOrder => {
 	        expect(foundOrder).to.exist;
 	        expect(foundOrder.billingCity).to.equal('NY');
-	      });		
+	      });
 		})
 
-		it.only('Address belongs to User', () => {
+		it('Address belongs to User', () => {
 			let creatingAddress = Address.create({
 			billing1: '7',
 			billingSt: '7th st',

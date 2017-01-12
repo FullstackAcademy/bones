@@ -10,6 +10,7 @@ const {expect} = require('chai')
 describe('Order suite', () => {
 
 	before('wait for the db', () => db.didSync)
+	after('synchronize and clear database', () => db.sync({force: true}));
 
 	describe('Working Associations', () => {
 		it('Order belongs to User', () => {
