@@ -38,9 +38,9 @@ export default class Header extends Component {
   </ul>
 
   <nav>
-    <div className="nav-wrapper light-blue darken-2">
+    <div className="nav-wrapper">
       <a href="#!" className="brand-logo"><i className="material-icons">cloud</i>Paint Hopper</a>
-      <ul className="right hide-on-med-and-down light-blue darken-2">
+      <ul className="right hide-on-med-and-down">
         <li>      
           <form>
             <div className="input-field">
