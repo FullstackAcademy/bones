@@ -48,10 +48,7 @@ describe.only('/api/users', () => {
       })
       .redirects(1)
       .then(res => {
-        console.log("asdfasdasdfasdkjfdsajkfsdjkhafsd") 
-        expect(res.body).to.contain({
-        userName: 'Ben'
-      })
+        expect(res.body).to.contain({username: 'Bubba'})
       })
     })    
   })
