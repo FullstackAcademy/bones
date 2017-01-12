@@ -34,6 +34,12 @@ module.exports = require('express').Router()
 	.put('/:id', (req, res, next) => {
 		req.requestedUser.update(req.body)
 		.then(updatedUser => res.status(204).json(updatedUser))
-		.catch(next)
-
+		.catch(next)	
 	})
+	// .delete('/:id', function (req, res, next) {
+	//   req.requestedUser.destroy()
+	//   .then(function () {
+	//     res.status(204).end();
+	//   })
+	//   .catch(next);
+	// })
