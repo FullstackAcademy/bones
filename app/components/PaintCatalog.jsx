@@ -20,6 +20,7 @@ export default class PaintCatalog extends Component {
 			        </div>
 			        <div className="card-action">
 			          <a href="#"><i className="material-icons">add</i></a>
+			          <a href="#">This is a link</a>
 			        </div>
 			      </div>
 			    </div>
