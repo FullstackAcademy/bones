@@ -6,11 +6,12 @@ const Order = db.model('orders')
 const Router = require('express').Router()
 
 Router.param('id',(req,res,next,id)=>{
-  if(NaN(id)) res.sendStatus(500)
+  if(isNaN(id)) res.sendStatus(500)
   else {
     Order.findById(id)
-    .then(order=>{
-      if(!order) res.sendStatus(404)
+    .then(foundOrder=>{
+      req.singleOrder = foundOrder
+      if(!foundOrder) res.sendStatus(404)
       next()
       return null;
     })
@@ -20,12 +21,29 @@ Router.param('id',(req,res,next,id)=>{
 
 Router.get('/',(req,res,next)=>{
   Order.findAll()
-  .then(orders=> res.json(orders))
+  .then(allOrders=> res.json(allOrders))
 })
 
+Router.post('/' ,(req, res, next) =>
+  Order.create(req.body)
+  .then(addedOrder => res.status(201).json(addedOrder))
+  .catch(next))
+
 Router.get('/:id',(req,res,next)=>{
-  Order.findById(req.params.id)
-  .then(order=> res.json(order))
+res.json(req.singleOrder)
 })
+
+Router.put('/:id',(req, res, next)=>{
+  req.singleOrder.update(req.body)
+  .then(updatedOrder =>{
+    res.send(updatedOrder)
+  })
+})
+Router.delete('/:id', (req, res, next)=>{
+  req.singleOrder.destroy()
+  .then( ()=> res.status(204).end())
+  .catch(next)
+})
+
 
 module.exports = Router
