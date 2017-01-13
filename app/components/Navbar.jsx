@@ -21,20 +21,20 @@ export default class Navbar extends Component {
 		return (
 <div>
   <ul id="dropdown1" className="dropdown-content">
-    <li><a href="#!">View Cart</a></li>
     <li><a href="#!">Clear Cart</a></li>
-    <li><a href="#!">Checkout</a></li>
+    <li><Link to='/checkout'>Checkout</Link></li>
   </ul>
   <ul id="dropdown2" className="dropdown-content">
-    <li><a href="#!">Log In</a></li>
+    <li><Link to='/login'>Log In</Link></li>
+    <li><Link to='/myorders'>My Orders</Link></li>
     <li><a href="#!">Account Settings</a></li>
     <li className="divider"></li>
     <li><a href="#!">Log Out</a></li>
   </ul>
   <ul id="dropdown3" className="dropdown-content">
-    <li><a href="#!">Paint</a></li>
-    <li><a href="#!">Tools</a></li>
-    <li><a href="#!">Accessories</a></li>
+    <li><Link to='/paint'>Paint</Link></li>
+    <li><Link to='/tools'>Tools</Link></li>
+    <li><Link to="/accessories">Accessories</Link></li>
   </ul>
 
   <nav>

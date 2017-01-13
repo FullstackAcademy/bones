@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import Navbar from '../components/Navbar'
+import NavBarContainer from '../containers/navbarContainer'
+import Home from '../components/Home'
 
 export default class App extends Component {
 
@@ -14,21 +15,10 @@ export default class App extends Component {
   render() {
     return (
       <div id="main">
-      <Navbar />
-        <div className="parallax-container">
-          <div className="parallax"><img src="images/parallax1.jpg" /></div>
-        </div>
-        <div className="section white">
-          <div className="row container">
-            <h2 className="header">Parallax</h2>
-            {this.props.children}
-            <p className="grey-text text-darken-3 lighten-3">Insert pic or other stuff here</p>
+          <NavBarContainer />
+          <div>
+          {this.props.children}
           </div>
-        </div>
-        <div className="parallax-container">
-          <div className="parallax"><img src="images/parallax2.jpg" /></div>
-        </div>
-
         {/* Include a container */}
       </div>
     )
