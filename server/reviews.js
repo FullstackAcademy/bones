@@ -5,38 +5,45 @@ const Review = db.model('reviews')
 // const models = require('../db/models');
 // const Review = models.Review;
 // const Review = require('APP/db/models/review')
-const Router = require('express').Router()
+const Router =
 
 
-Router.param('id', (req, res, next, id) => {
+module.exports = require('express').Router()
+.param('id', (req, res, next, id) => {
   if (isNaN(id)) res.sendStatus(500)
   else {
     Review.findById(id)
-    .then(review=>{
-      if (!review) res.sendStatus(404)
+    .then(foundReview => {
+		req.singleReview = foundReview;
+      if (!foundReview) res.sendStatus(404)
       next()
-      return null;
     })
-    .catch(next)
+    .catch(next);
   }
-  next()
-})
 
-Router.get('/',(req,res,next)=>{
+})
+.get('/', (req, res, next) => {
   Review.findAll()
-  .then(reviews=> {
-    res.json(reviews)})
+  .then(foundReviews=> {
+    res.json(foundReviews)})
 })
-
-Router.get('/:id',(req,res,next)=>{
-  review.findById(req.params.id)
-  .then(review=> res.json(review))
+.get('/:id', (req, res, next) => {
+	res.json(req.singleReview);
 })
-
-Router.post('/', (req,res,next)=>{
+.post('/', (req, res, next) => {
   Review.create(req.body)
-  .then(review => res.status(201).json(review))
+  .then(createdReview => res.status(201).json(createdReview))
   .catch(next)
 })
-
-module.exports = Router
+.put('/:id', (req, res, next) => {
+	req.singleReview.update(req.body)
+	.then(updatedUser => {
+		res.send(updatedUser)
+	})
+	.catch(next)
+})
+.delete('/:id', function (req, res, next) {
+  req.singleReview.destroy()
+  .then( () => res.status(204).end())
+  .catch(next);
+})
