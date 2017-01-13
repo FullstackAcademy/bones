@@ -40,9 +40,9 @@ describe.only('/api/products', () => {
 
     return Product.bulkCreate(products, {returning: true})
       .then(createdProduct => {
-       product1  = createdProduct[0].id;
-       product2  = createdProduct[1].id;
-       product3  = createdProduct[2].id;
+       product1  = createdProduct[0];
+       product2  = createdProduct[1];
+       product3  = createdProduct[2];
 
     })
   })
@@ -50,7 +50,7 @@ describe.only('/api/products', () => {
 
 	it('POSTs one product', () => {
     return request(app)
-      .post('/api/products')
+      .post(`/api/products`)
       .send({
         title: 'Davids Cobalt Blast',
         brand: 'Bubba Gump David',
@@ -59,26 +59,45 @@ describe.only('/api/products', () => {
         unitPrice: 33.77,
         inventoryQuantity: 37
       })
+      .expect(201)
       .then(res => {
-        console.log(res.body, res.status)
+        expect(res.body).to.contain({title: "Davids Cobalt Blast"})
       })
   });
 
-	xit('GETs all products', () => {
-    request(app)
-
+	it('GETs all products', () => {
+    return request(app)
+      .get('/api/products')
+      .then((res)=> {
+        expect(res.body).to.have.length(4)
+        expect(res.body[3]).to.contain({title: "Davids Cobalt Blast"})
+      })
+      
 	});
 
-	xit('GETs one product', () => {
-
+	it('GETs one product', () => {
+    return request(app)
+      .get('/api/products/1')
+      .then(res => {
+        expect(res.body).to.contain({title: "Ben's Best Blue"})
+      })
 	});
 
-	xit('PUTs one product', () => {
-
+	it('PUTs one product', () => {
+    return request(app)
+    .put('/api/products/3')
+    .send({brand: 'Rocky Balrocka'})
+    .then(res => {
+      expect(res.body).to.contain({brand: "Rocky Balrocka"})
+      expect(res.body).to.not.contain({brand: "The Quarry"})
+    })
 	});
 
-	xit('DELETEs one products', () => {
-
+	it('DELETEs one products', () => {
+    return request(app)
+    .delete('/api/products/3')
+    .send()
+    .then(res => expect(res.status).to.equal(204))
 	});
 	// it('GETS all reviews for a product', () => { 
 

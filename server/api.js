@@ -8,7 +8,7 @@ api
   .use('/auth', require('./auth'))
   .use('/users', require('./users'))
   // .use('/lineItems', require('./lineItems'))
-  // .use('/products', require('./products'))
+  .use('/products', require('./products'))
    .use('/reviews', require('./reviews'))
   // .use('/orders', require('./orders'));
 
@@ -18,4 +18,4 @@ api.use((err, req, res, next) => {
 });
 
 // No routes matched? 404.
-api.use((req, res) => res.status(404).end());
+api.use((req, res, next) => res.status(404).end());
