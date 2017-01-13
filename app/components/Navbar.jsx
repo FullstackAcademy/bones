@@ -41,11 +41,11 @@ export default class Navbar extends Component {
     <div className="nav-wrapper">
       <a href="#!" className="brand-logo"><i className="material-icons">cloud</i>Paint Hopper</a>
       <ul className="right hide-on-med-and-down">
-        <li>      
+        <li>
           <form>
             <div className="input-field">
               <input id="search" type="search" required />
-              <label for="search"><i className="material-icons">search</i></label>
+              <label htmlFor="search"><i className="material-icons">search</i></label>
               <i className="material-icons">close</i>
             </div>
           </form>
