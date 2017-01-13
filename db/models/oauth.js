@@ -1,8 +1,8 @@
-'use strict'
+'use strict';
 
-const debug = require('debug')('oauth')
-const Sequelize = require('sequelize')
-const db = require('APP/db')
+const debug = require('debug')('oauth');
+const Sequelize = require('sequelize');
+const db = require('APP/db');
 
 const OAuth = db.define('oauths', {
   uid: Sequelize.STRING,
@@ -15,12 +15,12 @@ const OAuth = db.define('oauths', {
   // OAuth v1 fields
   token: Sequelize.STRING,
   tokenSecret: Sequelize.STRING,
-  
+
   // The whole profile as JSON
   profileJson: Sequelize.JSON,
 }, {
-	indexes: [{fields: ['uid'], unique: true,}],
-})
+	indexes: [{fields: ['uid'], unique: true}],
+});
 
 OAuth.V2 = (accessToken, refreshToken, profile, done) =>
   this.findOrCreate({
@@ -38,18 +38,18 @@ OAuth.V2 = (accessToken, refreshToken, profile, done) =>
         oauth,
         user: token.getUser(),
         _saveProfile: oauth.save(),
-      })
+      });
     })
     .then(({ oauth, user }) => user ||
       User.create({
-        name: profile.displayName,        
+        name: profile.displayName,
       }).then(user => db.Promise.props({
         user,
         _setOauthUser: oauth.setUser(user)
       }))
     )
     .then(({ user }) => done(null, user))
-    .catch(done)
+    .catch(done);
 
 
 OAuth.setupStrategy =
@@ -57,21 +57,22 @@ OAuth.setupStrategy =
   provider,
   strategy,
   config,
-  oauth=OAuth.V2,
-  passport 
-}) => {      
+  oauth = OAuth.V2,
+  passport
+}) => {
   const undefinedKeys = Object.keys(config)
         .map(k => config[k])
-        .filter(value => typeof value === 'undefined')
+        .filter(value => typeof value === 'undefined');
   if (undefinedKeys.length) {
     undefinedKeys.forEach(key =>
-      debug('provider:%s: needs environment var %s', provider, key))
-    debug('provider:%s will not initialize', provider)
-    return
+      debug('provider:%s: needs environment var %s', provider, key));
+    debug('provider:%s will not initialize', provider);
+    return;
   }
 
-  debug('initializing provider:%s', provider)
+  debug('initializing provider:%s', provider);
   passport.use(new strategy(config, oauth))
-}
+};
+
 
 module.exports = OAuth
