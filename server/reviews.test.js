@@ -10,7 +10,7 @@ describe.only('/api/reviews route tests', () => {
 	//sync before each test
 	before('wait for the db', () => db.didSync)
 	//build and drop the database after each test
-	//after('synchronize and clear database', () => db.sync({force: true}));
+	after('synchronize and clear database', () => db.sync({force: true}));
 
 	let review1, review2, review3;
 
