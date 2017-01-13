@@ -36,7 +36,7 @@ res.json(req.singleOrder)
 Router.put('/:id',(req, res, next)=>{
   req.singleOrder.update(req.body)
   .then(updatedOrder =>{
-    res.send(updatedOrder)
+    res.json(updatedOrder)
   })
 })
 Router.delete('/:id', (req, res, next)=>{
