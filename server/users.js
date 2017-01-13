@@ -5,15 +5,10 @@ const User = db.model('users')
 
 const {mustBeLoggedIn, forbidden,} = require('./auth.filters')
 
-// router
-// })
-// ;
-
 module.exports = require('express').Router()
 	.param('id', function (req, res, next, id) {
 	  User.findById(id)
 	  .then(function (user) {
-	  //  if (!user) throw HttpError(404);
 	    req.requestedUser = user;
 	    next();
 	  })
@@ -42,4 +37,4 @@ module.exports = require('express').Router()
 	  req.requestedUser.destroy()
 	  .then( () => res.status(204).end())
 	  .catch(next);
-	})
+  });
