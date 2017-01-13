@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 export default class App extends Component {
 
   componentDidMount() {
-  
+
     $(document).ready(function(){
       $('.parallax').parallax();
     })
@@ -21,11 +21,7 @@ export default class App extends Component {
         <div className="section white">
           <div className="row container">
             <h2 className="header">Parallax</h2>
-<<<<<<< HEAD
-              {this.props.children}
-=======
             {this.props.children}
->>>>>>> master
             <p className="grey-text text-darken-3 lighten-3">Insert pic or other stuff here</p>
           </div>
         </div>
@@ -38,4 +34,3 @@ export default class App extends Component {
     )
   }
 }
-
