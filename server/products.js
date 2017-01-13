@@ -2,36 +2,47 @@
 
 const db = require('APP/db')
 const Product = db.model('products')
+const Router = require('express').Router()
 
-const {mustBeLoggedIn, forbidden} = require('./auth.filters')
+Router.param('id',(req,res,next,id)=>{
+  if(isNaN(id)) res.sendStatus(500)
+  else {
+    Product.findById(id)
+    .then(foundLine=>{
+      req.singleLine = foundLine
+      if(!foundOrder) res.sendStatus(404)
+      next()
+      return null;
+    })
+    .catch(next)
+  }
+})
 
-module.exports = require('express').Router()
-	.param('id', (req, res, next, id) {
-		Product.findById(id)
-		.then(product => {
-			req.requestedProduct = product
-			next()
-		})
-		.catch(next)
-	})
-	.get('/:id/reviews', (req, res, next) => {
+Router.get('/',(req,res,next)=>{
+  Product.findAll()
+  .then(allLines=> res.json(allLines))
+})
 
-	})
-	.get('/:id/reviews/:reviewid', (req, res, next) => {
+Router.post('/' ,(req, res, next) =>
+  Product.create(req.body)
+  .then(addedLine => res.status(201).json(addedLine))
+  .catch(next))
 
-	})
-	.get('/', (req, res, next) => {
-		
-	})
-	.get('/:id', (req, res, next) => {
+Router.get('/:id',(req,res,next)=>{
+res.json(req.singleLine)
+})
 
-	})
-	.post('/:id', (req, res, next) => {
+Router.put('/:id',(req, res, next)=>{
+  req.singleLine.update(req.body)
+  .then(updatedLine =>{
+    res.send(updatedLine)
+  })
+})
+Router.delete('/:id', (req, res, next)=>{
+  req.singleLine.destroy()
+  .then( ()=> res.status(204).end())
+  .catch(next)
+})
 
-	})
-	.put('/:id', (req, res, next) => {
 
-	})
-	.delete(':/id', (req, res, next) => {
-
-	})
+module.exports = Router
