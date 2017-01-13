@@ -5,6 +5,9 @@ const User = require('APP/db/models/user')
 const app = require('./start')
 
 describe('/api/users', () => {
+  before('wait for the db', () => db.didSync)
+  after('synchronize and clear database', () => db.sync({force: true}));
+
   describe('when not logged in', () => {
     it('GET /:id fails 401 (Unauthorized)', () =>
       request(app)
@@ -35,5 +38,31 @@ describe('/api/users', () => {
           email: 'eve@interloper.com'
         }))
     )
+  })
+
+  describe('when logged in', () => {
+   
+
+    it('PUT updates a user', () => {
+      return request(app)
+      .put(`/api/users/1`)
+      .send({
+        userName: 'Storm'
+      })
+      .then(res => {
+        expect(res.body).to.contain({userName: 'Storm'})
+      })
+    })    
+  })
+
+describe('deletes a user', () => {
+  it('deletes a user', () => {
+    return request(app)
+    .delete(`/api/users/2`)
+    .send()
+    .then(res => {
+      expect(res.status).to.equal(204)
+      })
+    })
   })
 })
