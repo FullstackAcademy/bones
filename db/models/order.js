@@ -19,19 +19,6 @@ const Order = db.define('orders', {
 		defaultValue: 0
 	},
 
-	shipping1: Sequelize.STRING,
-	shipping2: Sequelize.STRING,
-	shipping3: Sequelize.STRING,
-	shippingCity:  Sequelize.STRING,
-	shippingSt:  Sequelize.STRING,
-	shippingZip:  Sequelize.STRING,
-	billing1: Sequelize.STRING,
-	billing2: Sequelize.STRING,
-	billing3: Sequelize.STRING,
-	billingCity:  Sequelize.STRING,
-	billingSt:  Sequelize.STRING,
-	billingZip:  Sequelize.STRING,
-
 	customerType: Sequelize.ENUM(
 			'guest', 'registered'
 		),

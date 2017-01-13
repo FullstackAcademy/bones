@@ -7,10 +7,11 @@ api
   .get('/heartbeat', (req, res) => res.send({ok: true}))
   .use('/auth', require('./auth'))
   .use('/users', require('./users'))
-  // .use('/lineItems', require('./lineItems'))
+
   .use('/products', require('./products'))
-   .use('/reviews', require('./reviews'))
-  // .use('/orders', require('./orders'));
+  .use('/lineItems', require('./lineItems'))
+  .use('/reviews', require('./reviews'))
+  .use('/orders', require('./orders'));
 
 // Send along any errors
 api.use((err, req, res, next) => {
