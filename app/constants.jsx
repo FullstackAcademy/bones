@@ -1,1 +1,2 @@
 export const LOGIN_USER = 'LOGIN_USER'
+export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS'

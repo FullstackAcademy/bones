@@ -10,7 +10,8 @@ api
 
   .use('/products', require('./products'))
   .use('/lineItems', require('./lineItems'))
-  .use('/reviews', require('./reviews'))
+  .use('/products', require('./products'))
+   .use('/reviews', require('./reviews'))
   .use('/orders', require('./orders'));
 
 // Send along any errors
