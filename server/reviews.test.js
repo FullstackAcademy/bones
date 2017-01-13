@@ -5,7 +5,7 @@ const db = require('APP/db')
 const Review = require('APP/db/models/review')
 const app = require('./start')
 
-describe.only('/api/reviews route tests', () => {
+describe('/api/reviews route tests', () => {
 
 	//sync before each test
 	before('wait for the db', () => db.didSync)

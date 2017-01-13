@@ -11,7 +11,7 @@ Router.param('id',(req,res,next,id)=>{
     LineItem.findById(id)
     .then(foundLine=>{
       req.singleLine = foundLine
-      if(!foundOrder) res.sendStatus(404)
+      if(!foundLine) res.sendStatus(404)
       next()
       return null;
     })
@@ -36,7 +36,7 @@ res.json(req.singleLine)
 Router.put('/:id',(req, res, next)=>{
   req.singleLine.update(req.body)
   .then(updatedLine =>{
-    res.send(updatedLine)
+    res.json(updatedLine)
   })
 })
 Router.delete('/:id', (req, res, next)=>{
