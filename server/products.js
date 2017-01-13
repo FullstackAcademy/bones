@@ -14,6 +14,12 @@ module.exports = require('express').Router()
 		})
 		.catch(next)
 	})
+	.get('/:id/reviews', (req, res, next) => {
+
+	})
+	.get('/:id/reviews/:reviewid', (req, res, next) => {
+
+	})
 	.get('/', (req, res, next) => {
 		
 	})

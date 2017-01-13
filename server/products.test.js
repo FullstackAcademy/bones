@@ -28,4 +28,10 @@ describe.only('/api/products', () => {
   	it('DELETEs one products', () => {
 
   	});
+  	it('GETS all reviews for a product', () => {
+
+  	});
+  	it('GETS one review for a product', () => {
+  		
+  	})
 })
