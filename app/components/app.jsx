@@ -5,7 +5,7 @@ import Home from '../components/Home'
 export default class App extends Component {
 
   componentDidMount() {
-  
+
     $(document).ready(function(){
       $('.parallax').parallax();
     })
@@ -24,4 +24,3 @@ export default class App extends Component {
     )
   }
 }
-

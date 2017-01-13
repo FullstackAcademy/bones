@@ -60,7 +60,7 @@ describe('/api/reviews route tests', () => {
 		it('get one review', () =>
 		request(app)
 		.get(`/api/reviews/1`)
-		//.expect(200)
+		.expect(200)
 		.then(res => {
 			expect(res.body).to.exist
 			expect(res.body).to.contain({title: 'this paint is vibrant'})
@@ -68,13 +68,18 @@ describe('/api/reviews route tests', () => {
 		})
 	)
 
-	it('posts a review', () =>
+	it('creates a review', () =>
 		request(app)
-		.get(`/api/reviews/1`)
-		.expect(200)
+		.post(`/api/reviews`)
+		.send({
+			title: 'our experience was amazing',
+			content: 'Bubba is in the house',
+			numStars: '5'
+		})
+		.expect(201)
 		.then(res => {
-			expect(res.body).to.exist
-			expect(res.body).to.contain({title: 'this paint is vibrant'})
+			expect(res.body).to.be.an('object');
+			expect(res.body).to.contain({title: 'our experience was amazing'})
 			expect(res.body).to.contain({numStars: '5'})
 		})
 	)
