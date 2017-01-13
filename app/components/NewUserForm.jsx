@@ -1,54 +1,85 @@
 import React, {Component} from 'react';
 
-export default className NewUserForm extends Component {
+export default class NewUserForm extends Component {
+
+	constructor(props) {
+
+	super(props);
+		this.state = {
+			firstName: '',
+			lastName: '',
+			userName: '',
+			email: '',
+			password: ''
+		}
+
+		this.handleUserNameChange = this.handleFirstNameChange.bind(this);
+
+		this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
+
+		this.handleLastNameChange = this.handleFirstNameChange.bind(this);
+
+		this.handleEmailChange = this.handleFirstNameChange.bind(this);
+
+		this.handlePasswordNameChange = this.handleFirstNameChange.bind(this);
+
+}
+
+handleUserNameChange(event) {
+	this.setState({userName: event.target.value});
+}
+
+handleFirstName(event) {
+	this.setState({firstName: event.target.value});
+}
+
+handleLastNameChange(event) {
+	this.setState({lastName: event.target.value});
+}
+
+handleEmailChange(event) {
+	this.setState({password: event.target.value});
+}
+
+handlePasswordChange(event) {
+	this.setState({email: event.target.value});
+}
 
 	render() {
 
-		<div className="row">
-		  <form className="col s12">
+		return (
 			<div className="row">
-				<div className="input-field col s4">
-					<input placeholder="user name" id="userName" type="text" className="validate">
-					<label for="last_name">Last Name</label>
-				</div>
-				<div className="input-field col s4">
-					<input placeholder="first name" id="firstName" type="text" className="validate">
-					<label for="first_name">First Name</label>
-				</div>
-					<div className="input-field col s4">
-					<input placeholder="last name" id="lastName" type="text" className="validate">
-					<label for="last_name">Last Name</label>
-				</div>
+				<form className="col s12">
+					<div className="row">
+						<div className="input-field col s4">
+							<input placeholder="user name" id="userName" type="text" className="validate"/>
+							<label htmlFor="last_name">Last Name</label>
+						</div>
+						<div className="input-field col s4">
+							<input placeholder="first name" id="firstName" type="text" className="validate"/>
+							<label htmlFor="first_name">First Name</label>
+						</div>
+						<div className="input-field col s4">
+							<input placeholder="last name" id="lastName" type="text" className="validate"/>
+							<label htmlFor="last_name">Last Name</label>
+						</div>
+					</div>
+					<div className="row">
+						<div className="input-field col s12">
+							<input id="password" type="password" className="validate"/>
+							<label htmlFor="password">Password</label>
+						</div>
+					</div>
+					<div className="row">
+						<div className="input-field col s12">
+							<input id="email" type="email" className="validate"/>
+							<label htmlFor="email">Email</label>
+						</div>
+					</div>
+				</form>
 			</div>
-			<div className="row">
-			  <div className="input-field col s12">
-				<input disabled value="I am not editable" id="disabled" type="text" className="validate">
-				<label for="disabled">Disabled</label>
-			  </div>
-			</div>
-			<div className="row">
-			  <div className="input-field col s12">
-				<input id="password" type="password" className="validate">
-				<label for="password">Password</label>
-			  </div>
-			</div>
-			<div className="row">
-			  <div className="input-field col s12">
-				<input id="email" type="email" className="validate">
-				<label for="email">Email</label>
-			  </div>
-			</div>
-			<div className="row">
-			  <div className="col s12">
-				This is an inline input field:
-				<div className="input-field inline">
-				  <input id="email" type="email" className="validate">
-				  <label for="email" data-error="wrong" data-success="right">Email</label>
-				</div>
-			  </div>
-			</div>
-		  </form>
-		</div>
+		);
+
 
 	}
 }

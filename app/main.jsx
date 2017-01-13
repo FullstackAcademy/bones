@@ -8,6 +8,7 @@ import App from './components/app'
 
 import store from './store'
 import Login from './components/Login'
+import NewUserForm from './components/NewUserForm'
 import loginContainer from './containers/loginContainer'
 import PaintCatalog from './components/PaintCatalog'
 
@@ -25,6 +26,7 @@ ReactDOM.render (
       <Route path="/" component={App}>
         <Route path="/login" component={Login} />
         <Route path="/paint" component={PaintCatalog} />
+		<Route path="/user" component={NewUserForm} />
       </Route>
     </Router>
   </Provider>,
