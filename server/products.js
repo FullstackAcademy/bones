@@ -2,7 +2,6 @@
 
 const db = require('APP/db')
 const Product = db.model('products')
-
 const Router = require('express').Router()
 
 Router.param('id',(req,res,next,id)=>{
