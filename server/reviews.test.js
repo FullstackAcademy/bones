@@ -71,7 +71,7 @@ describe.only('/api/reviews route tests', () => {
 	it('posts a review', () =>
 		request(app)
 		.get(`/api/reviews/1`)
-		//.expect(200)
+		.expect(200)
 		.then(res => {
 			expect(res.body).to.exist
 			expect(res.body).to.contain({title: 'this paint is vibrant'})
