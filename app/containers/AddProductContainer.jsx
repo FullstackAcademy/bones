@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
-import Login from '../components/Login';
+import AddProduct from '../components/AddProduct';
 
 const mapStateToProps = (state, ownProps) => {
-  return {};
+  return state;
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(AddProduct);

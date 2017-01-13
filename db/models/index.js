@@ -36,4 +36,4 @@ Address.belongsTo(Order);
 Address.belongsTo(User);
 
 // associations complete, expose each model
-module.exports = {User, Order, Product, LineItem};
+module.exports = {User, Order, Product, LineItem, Address};

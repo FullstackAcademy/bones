@@ -41,7 +41,7 @@ Router.put('/:id',(req, res, next)=>{
 })
 Router.delete('/:id', (req, res, next)=>{
   req.singleLine.destroy()
-  .then( ()=> res.status(204).end())
+  .then( () => res.status(204).end())
   .catch(next)
 })
 
