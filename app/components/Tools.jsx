@@ -2,15 +2,14 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router';
 
-export default class Tools extends Component {
-	render() {
+export default function (props) {
 
 		return (
 			<div>
 				<h3 className="center-align">Tools Catalog</h3>
 				<div className='row'>
 					{
-					this.props.Catalog.products && this.props.Catalog.products.map(product => {
+					props.Catalog.products && props.Catalog.products.map(product => {
 						if(product.category === "painting tools")
 							return (
 								<div className="col s12 m6 l3 card-panel hoverable" key={product.id}>
@@ -36,5 +35,5 @@ export default class Tools extends Component {
 				</div>
 			</div>
 		)
-	}
+
 	}

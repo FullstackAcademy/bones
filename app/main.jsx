@@ -18,6 +18,7 @@ import ToolsContainer from './containers/ToolsContainer'
 import AccessoriesContainer from './containers/AccessoriesContainer'
 import CheckoutContainer from './containers/CheckoutContainer'
 import MyOrdersContainer from './containers/MyOrdersContainer'
+import CatalogContainer from './containers/catalogContainer'
 
 
 import axios from 'axios'
@@ -40,6 +41,7 @@ ReactDOM.render (
         <Route path="/paint" component={PaintCatalogContainer} />
         <Route path='/tools' component={ToolsContainer} />
         <Route path ='/accessories' component={AccessoriesContainer} />
+        <Route path ='/catalog/:categoryName' component={CatalogContainer} />
         <Route path ='/checkout' component={CheckoutContainer} />
         <Route path ='/myorders' component={MyOrdersContainer} />
        <IndexRedirect to='/home' />

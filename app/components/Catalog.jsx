@@ -6,11 +6,15 @@ export default function (props) {
 
 		return (
 			<div>
-				<h3 className="center-align">Paint Catalog</h3>
+				<h3 className="center-align">{props.category.charAt(0).toUpperCase() + props.category.slice(1)} Catalog</h3>
 				<div className='row'>
 					{
 					props.Catalog.products && props.Catalog.products.map(product => {
-						if(product.category === "paint")
+						// let idenitifier;
+						// if (props.category === "paint") identifier = ['paint']
+						// else if(props.category === ['painting tools'])
+						// else if(props.category === "accessories")
+						if(product.category === props.category)
 							return (
 							  <div className="col s12 m6 l3 card-panel hoverable" key={product.id}>
 							    <h5 className="header">{product.title}</h5>

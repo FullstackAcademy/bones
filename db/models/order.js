@@ -8,9 +8,11 @@ const LineItem = require('./lineItem')
 //Make address models
 const Order = db.define('orders', {
 
-	status: Sequelize.ENUM(
+	status: {
+		type: Sequelize.ENUM(
 		'cart', 'purchased'
 	),
+	defaultValue: 'cart'},
 	datePurchased: Sequelize.DATE,
 	dateDelivered: Sequelize.DATE,
 	totalCost: {

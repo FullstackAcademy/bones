@@ -9,7 +9,7 @@ const receiveProducts = function(products) {
 }
 
 export const loadProducts = function() {
-	return function(dispatch) {
+	return function(dispatch, getState) {
 		axios.get('/api/products')
 			.then(res => res.data)
 			.then(products => {
