@@ -39,7 +39,7 @@ export default class Navbar extends Component {
 
   <nav>
     <div className="nav-wrapper">
-      <a href="#!" className="brand-logo"><i className="material-icons">cloud</i>Paint Hopper</a>
+      <Link to="/home"><div className="brand-logo"><i className="material-icons">cloud</i>Paint Hopper</div> </Link>
       <ul className="right hide-on-med-and-down">
         <li>
           <form>

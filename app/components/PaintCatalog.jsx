@@ -11,7 +11,8 @@ export default class PaintCatalog extends Component {
 				<h3 className="center-align">Paint Catalog</h3>
 				<div className='row'>
 					{
-					this.props.paintCatalog.products && this.props.paintCatalog.products.map(product => {
+					this.props.Catalog.products && this.props.Catalog.products.map(product => {
+						if(product.category === "paint")
 							return (
 							  <div className="col s12 m6 l3 card-panel hoverable" key={product.id}>
 							    <h5 className="header">{product.title}</h5>
@@ -30,6 +31,7 @@ export default class PaintCatalog extends Component {
 							    </div>
 							  </div>
 							)
+
 						})
 					}
 			  </div>
@@ -37,4 +39,3 @@ export default class PaintCatalog extends Component {
 		)
 	}
 }
-
