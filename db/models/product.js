@@ -19,7 +19,11 @@ const Product = db.define('products', {
 		validate: {
 			isUrl: true
 		}
-	}
+	},
+	paintColor: Sequelize.ENUM('black', 'yellow', 'red', 'blue', 'green', 'orange', 'white', 'pink','purple'),
+	paintType: Sequelize.ENUM('flat', 'eggshell', 'semi-gloss','gloss'),
+	paintLoc: Sequelize.ENUM('interior', 'exterior')
+
 }, {
         getterMethods: {
             starRating: function() {

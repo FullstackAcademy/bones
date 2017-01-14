@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import {Router, Route, IndexRedirect, browserHistory, hashHistory} from 'react-router'
 import {connect, Provider} from 'react-redux'
 
-import {loadProducts} from './action-creators/paintCatalog'
+import {loadProducts} from './action-creators/Catalog'
 
 import App from './components/app'
 
@@ -26,19 +26,18 @@ const onLoginEnter = function() {
 
 }
 
-const onPaintCatalogEnter = function() {
+const onAppEnter = function() {
   store.dispatch(loadProducts())
 }
 
 ReactDOM.render (
   <Provider store={store}>
     <Router history={hashHistory}>
-      <Route path="/" component={App}>
+      <Route path="/" component={App} onEnter={onAppEnter}>
       	<Route path ='/home' component={HomeContainer} />
         <Route path="/login" component={Login} />
-
-		<Route path="/user" component={NewUserForm} />
-        <Route path="/paint" component={PaintCatalogContainer} onEnter={onPaintCatalogEnter}/>
+		    <Route path="/user" component={NewUserForm} />
+        <Route path="/paint" component={PaintCatalogContainer} />
         <Route path='/tools' component={ToolsContainer} />
         <Route path ='/accessories' component={AccessoriesContainer} />
         <Route path ='/checkout' component={CheckoutContainer} />

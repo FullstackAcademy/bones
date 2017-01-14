@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Tools from '../components/Tools';
 
 const mapStateToProps = (state, ownProps) => {
-  return {};
+  return state;
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

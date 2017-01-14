@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
-import paintCatalogReducer from './paintCatalog'
+import CatalogReducer from './Catalog'
 
 const rootReducer = combineReducers({
   auth: require('./auth').default,
-  paintCatalog: paintCatalogReducer
+  Catalog: CatalogReducer
 })
 
 export default rootReducer

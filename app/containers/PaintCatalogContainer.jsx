@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import PaintCatalog from '../components/PaintCatalog';
-import {loadProducts} from '../action-creators/paintCatalog'
+// import {loadProducts} from '../action-creators/Catalog'
 
 const mapStateToProps = (state, ownProps) => {
   return state;
