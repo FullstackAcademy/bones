@@ -27,7 +27,7 @@ export default class Navbar extends Component {
   <ul id="dropdown2" className="dropdown-content">
     <li><Link to='/login'>Log In</Link></li>
     <li><Link to='/myorders'>My Orders</Link></li>
-    <li><a href="#!">Account Settings</a></li>
+    <li><Link to='/user'>Account Settings</Link></li>
     <li className="divider"></li>
     <li><a href="#!">Log Out</a></li>
   </ul>
@@ -41,11 +41,11 @@ export default class Navbar extends Component {
     <div className="nav-wrapper">
       <a href="#!" className="brand-logo"><i className="material-icons">cloud</i>Paint Hopper</a>
       <ul className="right hide-on-med-and-down">
-        <li>      
+        <li>
           <form>
             <div className="input-field">
               <input id="search" type="search" required />
-              <label for="search"><i className="material-icons">search</i></label>
+              <label htmlFor="search"><i className="material-icons">search</i></label>
               <i className="material-icons">close</i>
             </div>
           </form>

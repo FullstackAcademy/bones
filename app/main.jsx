@@ -12,6 +12,7 @@ import store from './store'
 import Login from './components/Login'
 
 import NewUserForm from './components/NewUserForm'
+import UserContainer from './containers/UserContainer'
 import PaintCatalogContainer from './containers/PaintCatalogContainer'
 import HomeContainer from './containers/HomeContainer'
 import ToolsContainer from './containers/ToolsContainer'
@@ -34,16 +35,16 @@ ReactDOM.render (
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path="/" component={App}>
-      	<Route path ='/home' component={HomeContainer} />
+		<Route path ='/home' component={HomeContainer} />
         <Route path="/login" component={Login} />
-
-		<Route path="/user" component={NewUserForm} />
+		<Route path="/usersignup" component={NewUserForm} />
+		<Route path="/user" component={UserContainer} />
         <Route path="/paint" component={PaintCatalogContainer} onEnter={onPaintCatalogEnter}/>
         <Route path='/tools' component={ToolsContainer} />
         <Route path ='/accessories' component={AccessoriesContainer} />
         <Route path ='/checkout' component={CheckoutContainer} />
         <Route path ='/myorders' component={MyOrdersContainer} />
-       <IndexRedirect to='/home' />
+       {/* <IndexRedirect to='/home' /> */}
       </Route>
     </Router>
   </Provider>,
