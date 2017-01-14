@@ -1,0 +1,19 @@
+.home-pic {
+  color: white;
+}
+
+.promo{
+  background-image: url("https://www.rover.com/blog/wp-content/uploads/2014/12/hoodies-900x540.jpg");
+}
+
+.women{
+  background-image: url("https://s-media-cache-ak0.pinimg.com/564x/3b/42/7e/3b427e713db68779f72ebc9686ba78f8.jpg");
+}
+
+.men{
+  background-image: url("https://s-media-cache-ak0.pinimg.com/236x/c5/40/e2/c540e281787338d8c10c75eb2ed9254f.jpg");
+}
+
+.dogs{
+  background-image: url("http://i.imgur.com/yqJvm0Pl.jpg");
+}
