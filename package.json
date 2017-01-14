@@ -1,7 +1,7 @@
 {
   "name": "painthopper",
   "version": "0.0.1",
-  "description": "A happy little skeleton.",
+  "description": "A paint store",
   "main": "index.js",
   "scripts": {
     "test": "check-node-version --node '>= 6.7.0' && bin/setup && mocha --compilers js:babel-register app/**/*.test.js app/**/*.test.jsx db/**/*.test.js server/**/*.test.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/queerviolet/bones.git"
+    "url": "git+https://github.com/dfrho/paintHopper"
   },
   "keywords": [
     "react",
@@ -23,9 +23,9 @@
   "author": "Ashi Krishnan <me@ashi.works>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/queerviolet/bones/issues"
+    "url": "https://github.com/dfrho/paintHopper/issues"
   },
-  "homepage": "https://github.com/queerviolet/bones#readme",
+  "homepage": "https://github.com/dfrho/paintHopper#readme",
   "dependencies": {
     "axios": "^0.15.2",
     "babel-preset-stage-2": "^6.18.0",
