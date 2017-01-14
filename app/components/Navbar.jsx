@@ -32,9 +32,9 @@ export default class Navbar extends Component {
     <li><a href="#!">Log Out</a></li>
   </ul>
   <ul id="dropdown3" className="dropdown-content">
-    <li><Link to='/paint'>Paint</Link></li>
-    <li><Link to='/tools'>Tools</Link></li>
-    <li><Link to="/accessories">Accessories</Link></li>
+    <li><Link to='/catalog/paint'>Paint</Link></li>
+    <li><Link to='/catalog/tools'>Tools</Link></li>
+    <li><Link to="/catalog/accessories">Accessories</Link></li>
   </ul>
 
   <nav>

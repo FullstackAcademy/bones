@@ -5,7 +5,7 @@ const Product = db.define('products', {
 	title: Sequelize.STRING,
 	brand: Sequelize.STRING,
 	category: Sequelize.ENUM(
-		'paint', 'prep', 'painting tools', 'cleanup', 'safety'
+		'paint', 'tools', 'accessories'
 	),
 	description: Sequelize.STRING,
 	size: Sequelize.STRING,
@@ -22,7 +22,9 @@ const Product = db.define('products', {
 	},
 	paintColor: Sequelize.ENUM('black', 'yellow', 'red', 'blue', 'green', 'orange', 'white', 'pink','purple'),
 	paintType: Sequelize.ENUM('flat', 'eggshell', 'semi-gloss','gloss'),
-	paintLoc: Sequelize.ENUM('interior', 'exterior')
+	paintLoc: Sequelize.ENUM('interior', 'exterior'),
+	accesssoryType: Sequelize.ENUM('prep','cleanup','safety'),
+	toolType: Sequelize.ENUM('painting')
 
 }, {
         getterMethods: {

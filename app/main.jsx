@@ -15,20 +15,21 @@ import ToolsContainer from './containers/ToolsContainer'
 import AccessoriesContainer from './containers/AccessoriesContainer'
 import CheckoutContainer from './containers/CheckoutContainer'
 import MyOrdersContainer from './containers/MyOrdersContainer'
+import CatalogContainer from './containers/catalogContainer'
+
 import axios from 'axios'
+
 const onLoginEnter = function() {}
 const onAppEnter = function() {
 	store.dispatch(loadProducts())
 }
+
 ReactDOM.render(
 	<Provider store={store}>
 	<Router history={hashHistory}>
 		<Route path="/" component={App} onEnter={onAppEnter}>
 			<Route path='/home' component={HomeContainer}/>
-			<Route path="/login" component={Login}/>
-			<Route path="/usersignup" component={NewUserForm}/>
 			<Route path="/user" component={UserContainer}/>
-			<Route path='/home' component={HomeContainer}/>
 			<Route path="/login" component={Login}/>
 			<Route path="/usersignup" component={NewUserForm}/>
 			<Route path="/paint" component={PaintCatalogContainer}/>
@@ -36,6 +37,7 @@ ReactDOM.render(
 			<Route path='/accessories' component={AccessoriesContainer}/>
 			<Route path='/checkout' component={CheckoutContainer}/>
 			<Route path='/myorders' component={MyOrdersContainer}/>
+			<Route path ='/catalog/:categoryName' component={CatalogContainer} />
 			<IndexRedirect to='/home'/>
 		</Route>
 	</Router>

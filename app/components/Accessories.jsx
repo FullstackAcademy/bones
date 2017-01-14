@@ -2,16 +2,13 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router';
 
-export default class Accessories extends Component {
-
-	render() {
-
+export default function (props) {
 		return (
 			<div>
 				<h3 className="center-align">Accessories Catalog</h3>
 				<div className='row'>
 					{
-					this.props.Catalog.products && this.props.Catalog.products.map(product => {
+					props.Catalog.products && props.Catalog.products.map(product => {
 						if(product.category === "prep" || product.category === "cleanup" || product.category === "safety")
 							return (
 								<div className="col s12 m6 l3 card-panel hoverable" key={product.id}>
@@ -37,5 +34,5 @@ export default class Accessories extends Component {
 				</div>
 			</div>
 		)
-	}
+	
 }
