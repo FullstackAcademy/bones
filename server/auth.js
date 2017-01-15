@@ -35,6 +35,7 @@ const auth = require('express').Router()
 
 // Facebook needs the FACEBOOK_CLIENT_ID and FACEBOOK_CLIENT_SECRET
 // environment variables.
+
 OAuth.setupStrategy({
   provider: 'facebook',
   strategy: require('passport-facebook').Strategy,
