@@ -17,11 +17,11 @@ const Product = db.define('products', {
 			isUrl: true
 		}
 	},
-	paintColorCat: Sequelize.ENUM('black', 'yellow', 'red', 'blue', 'green', 'orange', 'white', 'pink','purple','grey'),
+	paintColorCat: Sequelize.ENUM('black', 'yellow', 'red', 'blue', 'green', 'orange', 'white', 'pink', 'purple', 'grey', 'brown'),
 	paintType: Sequelize.ENUM('flat', 'eggshell', 'semi-gloss','gloss'),
 	paintLoc: Sequelize.ENUM('interior', 'exterior'),
 	accesssoryType: Sequelize.ENUM('prep', 'cleanup', 'safety'),
-	toolType: Sequelize.ENUM('painting')
+	toolType: Sequelize.ENUM('painting', 'other')
 }, {
 	getterMethods: {
 		starRating: function() {

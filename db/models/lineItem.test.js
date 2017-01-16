@@ -8,7 +8,7 @@ const expect = require('chai').expect
 describe('LineItem', () => {
  before('wait for the db', () => db.didSync)
  after('synchronize and clear database', () => db.sync({force: true}));
- 
+
  describe('Working Associations', () => {
    it('LineItem belongs to Product', () => {
      let creatingProduct = Product.create({title: "Test"});
@@ -60,27 +60,27 @@ describe('LineItem', () => {
    })
  })
  describe('Testing Instance Method', () => {
-   it("Sets unit cost to product cost", () => {
-     let creatingProduct = Product.create({title: "Test", unitPrice: 5});
-     let creatingLineItem = LineItem.create({})
-     return Promise.all([creatingProduct, creatingLineItem])
-        .then(([createdProduct, createdLineItem]) => {
-            return createdProduct.addLineItem(createdLineItem)
-        })
-        .then(product => {
-            return LineItem.findOne({
-                where: {product_id: product.id}
-            })
-
-        })
-        .then(foundLineItem => {
-            return foundLineItem.save()
-        })
-        .then(foundLineItem => {
-          expect(foundLineItem.productDetail).to.equal('Test')
-          expect(foundLineItem.unitCost).to.equal(5)
-        })
-   })
+  //  it("Sets unit cost to product cost", () => {
+  //    let creatingProduct = Product.create({title: "Test", unitPrice: 5});
+  //    let creatingLineItem = LineItem.create({})
+  //    return Promise.all([creatingProduct, creatingLineItem])
+  //       .then(([createdProduct, createdLineItem]) => {
+  //           return createdProduct.addLineItem(createdLineItem)
+  //       })
+  //       .then(product => {
+  //           return LineItem.findOne({
+  //               where: {product_id: product.id}
+  //           })
+   //
+  //       })
+  //       .then(foundLineItem => {
+  //           return foundLineItem.save()
+  //       })
+  //       .then(foundLineItem => {
+  //         expect(foundLineItem.productDetail).to.equal('Test')
+  //         expect(foundLineItem.unitCost).to.equal(5)
+  //       })
+  //  })
    it("Modifies the count correctly", () => {
      let creatingProduct = Product.create({title: "Test", unitPrice: 5});
      let creatingLineItem = LineItem.create({})
