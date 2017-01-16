@@ -17,8 +17,8 @@ const Product = db.define('products', {
 			isUrl: true
 		}
 	},
-	paintColorCat: Sequelize.ENUM('black', 'yellow', 'red', 'blue', 'green', 'orange', 'white', 'pink', 'purple'),
-	paintType: Sequelize.ENUM('flat', 'eggshell', 'semi-gloss', 'gloss'),
+	paintColorCat: Sequelize.ENUM('black', 'yellow', 'red', 'blue', 'green', 'orange', 'white', 'pink','purple','grey'),
+	paintType: Sequelize.ENUM('flat', 'eggshell', 'semi-gloss','gloss'),
 	paintLoc: Sequelize.ENUM('interior', 'exterior'),
 	accesssoryType: Sequelize.ENUM('prep', 'cleanup', 'safety'),
 	toolType: Sequelize.ENUM('painting')

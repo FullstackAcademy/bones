@@ -31,13 +31,20 @@ describe('/api/products', () => {
       {
         title: "Coarse Sand",
         brand: "The Quarry",
-        category: "prep",
+        category: "accessories",
         description: "Coarse sand - perfect for removal of anything from anything. And removal of that thing",
         unitPrice: 2.00,
         inventoryQuantity: 500,
+      },
+      {
+        userName: "IMBATMAN",
+        firstName:
+        "Batman",
+        lastName: "Batman",
+        email: "batman@batman.com",
+        password: "1234"
       }
     ]
-
     return Product.bulkCreate(products, {returning: true})
       .then(createdProduct => {
        product1  = createdProduct[0];
