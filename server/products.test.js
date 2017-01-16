@@ -6,7 +6,7 @@ const app = require('./start')
 
 describe('/api/products', () => {
 	before('wait for the db', () => db.didSync)
-  //after('synchronize and clear database', () => db.sync({force: true}));
+  after('synchronize and clear database', () => db.sync({force: true}));
 
   let product1, product2, product3
 
@@ -35,14 +35,6 @@ describe('/api/products', () => {
         description: "Coarse sand - perfect for removal of anything from anything. And removal of that thing",
         unitPrice: 2.00,
         inventoryQuantity: 500,
-      },
-      {
-        userName: "IMBATMAN",
-        firstName:
-        "Batman",
-        lastName: "Batman",
-        email: "batman@batman.com",
-        password: "1234"
       }
     ]
     return Product.bulkCreate(products, {returning: true})
