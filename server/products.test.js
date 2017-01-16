@@ -23,7 +23,7 @@ describe('/api/products', () => {
       {
         title: "Bubba's Special Stick",
         brand: "A Moderately Sized Tree",
-        category: "painting tools",
+        category: "tools",
         description: "From the one and only A Moderately Sized Tree. Tree was not harmed in the making of this stick.",
         unitPrice: 5000.00,
         inventoryQuantity: 1,
@@ -31,13 +31,20 @@ describe('/api/products', () => {
       {
         title: "Coarse Sand",
         brand: "The Quarry",
-        category: "prep",
+        category: "accessories",
         description: "Coarse sand - perfect for removal of anything from anything. And removal of that thing",
         unitPrice: 2.00,
         inventoryQuantity: 500,
+      },
+      {
+        userName: "IMBATMAN",
+        firstName:
+        "Batman",
+        lastName: "Batman",
+        email: "batman@batman.com",
+        password: "1234"
       }
     ]
-
     return Product.bulkCreate(products, {returning: true})
       .then(createdProduct => {
        product1  = createdProduct[0];
@@ -72,7 +79,7 @@ describe('/api/products', () => {
         expect(res.body).to.have.length(4)
         expect(res.body[3]).to.contain({title: "Davids Cobalt Blast"})
       })
-      
+
 	});
 
 	it('GETs one product', () => {
@@ -99,11 +106,11 @@ describe('/api/products', () => {
     .send()
     .then(res => expect(res.status).to.equal(204))
 	});
-	// it('GETS all reviews for a product', () => { 
+	// it('GETS all reviews for a product', () => {
 
 	// });
 	// it('GETS one review for a product', () => {
-		
+
 	// })
 
 })
