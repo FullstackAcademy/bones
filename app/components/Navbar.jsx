@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router';
+import { logout } from '../reducers/auth'
 
 
 const defaultStyle = {
@@ -29,7 +30,7 @@ export default class Navbar extends Component {
     <li><Link to='/myorders'>My Orders</Link></li>
     <li><Link to='/user'>Account Settings</Link></li>
     <li className="divider"></li>
-    <li><a href="#!">Log Out</a></li>
+    <li onMouseUp={logout}>Log Out</li>
   </ul>
   <ul id="dropdown3" className="dropdown-content">
     <li><Link to='/catalog/paint'>Paint</Link></li>
