@@ -12,7 +12,7 @@ export default function (props) {
 					props.Catalog.products && props.Catalog.products.map(product => {
 						// let idenitifier;
 						// if (props.category === "paint") identifier = ['paint']
-						// else if(props.category === ['painting tools'])
+						// else if(props.category === ['tools'])
 						// else if(props.category === "accessories")
 						if(product.category === props.category)
 							return (

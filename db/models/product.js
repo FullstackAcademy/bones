@@ -3,7 +3,7 @@ const db = require('APP/db')
 const Product = db.define('products', {
 	title: Sequelize.STRING,
 	brand: Sequelize.STRING,
-	category: Sequelize.ENUM('paint', 'tools', 'accessories', 'prep'),
+	category: Sequelize.ENUM('paint', 'tools', 'accessories'),
 	description: Sequelize.STRING,
 	size: Sequelize.STRING,
 	unitPrice: Sequelize.FLOAT,
@@ -17,7 +17,7 @@ const Product = db.define('products', {
 			isUrl: true
 		}
 	},
-	paintColor: Sequelize.ENUM('black', 'yellow', 'red', 'blue', 'green', 'orange', 'white', 'pink', 'purple'),
+	paintColorCat: Sequelize.ENUM('black', 'yellow', 'red', 'blue', 'green', 'orange', 'white', 'pink', 'purple'),
 	paintType: Sequelize.ENUM('flat', 'eggshell', 'semi-gloss', 'gloss'),
 	paintLoc: Sequelize.ENUM('interior', 'exterior'),
 	accesssoryType: Sequelize.ENUM('prep', 'cleanup', 'safety'),
