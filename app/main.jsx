@@ -12,10 +12,7 @@ import store from './store'
 import Login from './components/Login'
 
 import NewUserForm from './components/NewUserForm'
-import PaintCatalogContainer from './containers/PaintCatalogContainer'
 import HomeContainer from './containers/HomeContainer'
-import ToolsContainer from './containers/ToolsContainer'
-import AccessoriesContainer from './containers/AccessoriesContainer'
 import CheckoutContainer from './containers/CheckoutContainer'
 import MyOrdersContainer from './containers/MyOrdersContainer'
 import CatalogContainer from './containers/catalogContainer'
@@ -38,9 +35,6 @@ ReactDOM.render (
       	<Route path ='/home' component={HomeContainer} />
         <Route path="/login" component={Login} />
 		    <Route path="/user" component={NewUserForm} />
-        <Route path="/paint" component={PaintCatalogContainer} />
-        <Route path='/tools' component={ToolsContainer} />
-        <Route path ='/accessories' component={AccessoriesContainer} />
         <Route path ='/catalog/:categoryName' component={CatalogContainer} />
         <Route path ='/checkout' component={CheckoutContainer} />
         <Route path ='/myorders' component={MyOrdersContainer} />

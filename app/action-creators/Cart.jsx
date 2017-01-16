@@ -1,28 +1,44 @@
-import {RECEIVE_PRODUCTS} from '../constants'
+import {CREATE_ORDER} from '../constants'
 import axios from 'axios'
 
-const receiveProducts = function(products) {
+const addOrder = function(addedOrder) {
 	return {
-		type: RECEIVE_PRODUCTS,
-		products
+		type: CREATE_ORDER,
+		addedOrder
 	}
 }
 
 
 
-export const addToCart = function(productId) {
+export  function addToCart (userId, order, productId) {
 	return function(dispatch, getState) {
-    console.log('testing to see if i have active order')
-    if(!getState().order){
-      console.log('I do not have an active order')
-      axios.post('api/orders', {})
-      .then(newOrder =>{
-        console.log(newOrder)
-      })
-    }
-    else {
-      console.log('I have an active order')
-    }
+			let authId = {}
+			let currentOrderId
+			if(order) currentOrderId = order.id
+			if(userId) authId = {user_id : userId}
+			Promise.resolve()
+			.then(()=>{
+				if(!order){
+
+	      return axios.post('api/orders', authId)
+	      .then(newOrder =>{
+					currentOrderId = newOrder.data.id
+					dispatch(addOrder(newOrder.data))
+	       })
+			 }
+		 })
+			 .then(()=>{
+			 return axios.get(`api/orders/${currentOrderId}`)
+			 .then(order=>order.data)
+			 .then(order=>{
+				return order
+			 })
+		 })
+		 .then((order)=>{
+			 let searchingForLine = null
+			 searchingForLine = order.lineItems.filter(val => val[product_id] === productId)
+			// console.log(searchingForLine)
+		 })
 
 
 
@@ -33,6 +49,6 @@ export const addToCart = function(productId) {
 
 
 
-axios.post('/api/products')
-  .then(res=>res.data)
-  .then(addedOrder)
+// axios.post('/api/products')
+//   .then(res=>res.data)
+//   .then(addedOrder)
