@@ -15,11 +15,12 @@ export  function addToCart (userId, order, productId) {
 			let authId = {}
 			let currentOrderId
 			if(order) currentOrderId = order.id
+			else if(getState().Session.order)currentOrderId= getState().Session.order.id
 			if(userId) authId = {user_id : userId}
 			Promise.resolve()
 			.then(()=>{
-				if(!order){
-
+				if(!order && !getState().Session.order){
+					// console.log('yo')
 	      return axios.post('api/orders', authId)
 	      .then(newOrder =>{
 					currentOrderId = newOrder.data.id
@@ -36,18 +37,23 @@ export  function addToCart (userId, order, productId) {
 		 })
 		 .then((order)=>{
 			 let searchingForLine = null
-			 searchingForLine = order.lineItems.filter(val => val[product_id] === productId)
+			 searchingForLine = order.lineItems.filter(val => val["product_id"] === productId)
 			// console.log(searchingForLine)
+
+			if(!searchingForLine.length){
+				return axios.post(`api/lineItems`, {order_id: currentOrderId, product_id: productId})
+			}
+			else {
+				let newCount = searchingForLine[0].count+1
+				return axios.put(`api/lineItems/${searchingForLine[0].id}`, {count: newCount})
+
+			}
 		 })
-
-
-
 	}
 }
 
+export function loadCart (){
+	 return function(dispatch, getState){
 
-
-
-// axios.post('/api/products')
-//   .then(res=>res.data)
-//   .then(addedOrder)
+	 }
+}

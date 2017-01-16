@@ -5,6 +5,9 @@ const Order = db.model('orders')
 const User = db.model('users')
 
 const Router = require('express').Router()
+Router.get('/isOrder', (req, res, next)=>{
+  res.json(req.session)
+})
 
 Router.param('id',(req,res,next,id)=>{
   if(isNaN(id)) res.sendStatus(500)
@@ -20,16 +23,23 @@ Router.param('id',(req,res,next,id)=>{
   }
 })
 
+Router.use('/cart', (req, res, next)=>{
+  req.session.cart = req.body
+})
+
 Router.get('/',(req,res,next)=>{
   Order.scope('lineItems').findAll()
   .then(allOrders=> res.json(allOrders))
 })
 
 Router.post('/' ,(req, res, next) =>
+{console.log('req.body', req.body)
   Order.create(req.body)
   .then(addedOrder => {
+    req.session.order = {id: addedOrder.id}
     res.status(201).json(addedOrder)})
-  .catch(next))
+  .catch(next)
+})
 
 Router.get('/:id',(req,res,next)=>{
 res.json(req.singleOrder)
