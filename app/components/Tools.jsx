@@ -10,7 +10,7 @@ export default function (props) {
 				<div className='row'>
 					{
 					props.Catalog.products && props.Catalog.products.map(product => {
-						if(product.category === "painting tools")
+						if(product.category === "tools")
 							return (
 								<div className="col s12 m6 l3 card-panel hoverable" key={product.id}>
 									<h5 className="header">{product.title}</h5>

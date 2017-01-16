@@ -1,12 +1,9 @@
 const Sequelize = require('sequelize')
 const db = require('APP/db')
-
 const Product = db.define('products', {
 	title: Sequelize.STRING,
 	brand: Sequelize.STRING,
-	category: Sequelize.ENUM(
-		'paint', 'tools', 'accessories'
-	),
+	category: Sequelize.ENUM('paint', 'tools', 'accessories'),
 	description: Sequelize.STRING,
 	size: Sequelize.STRING,
 	unitPrice: Sequelize.FLOAT,
@@ -20,34 +17,29 @@ const Product = db.define('products', {
 			isUrl: true
 		}
 	},
-	paintColor: Sequelize.ENUM('black', 'yellow', 'red', 'blue', 'green', 'orange', 'white', 'pink','purple'),
-	paintType: Sequelize.ENUM('flat', 'eggshell', 'semi-gloss','gloss'),
+	paintColorCat: Sequelize.ENUM('black', 'yellow', 'red', 'blue', 'green', 'orange', 'white', 'pink', 'purple'),
+	paintType: Sequelize.ENUM('flat', 'eggshell', 'semi-gloss', 'gloss'),
 	paintLoc: Sequelize.ENUM('interior', 'exterior'),
-	accesssoryType: Sequelize.ENUM('prep','cleanup','safety'),
+	accesssoryType: Sequelize.ENUM('prep', 'cleanup', 'safety'),
 	toolType: Sequelize.ENUM('painting')
-
 }, {
-        getterMethods: {
-            starRating: function() {
-                //getReviews()?
-				// get average of all reviews with this productId something like this?  //Math.floor(foundReviews.reduce(function(prev, current) {
-					//return prev.rating + current.rating
-				//} / foundReviews.length))
-              }
-          }
-      },{
-        classMethods: {
-            //
-
-      	},
-        instanceMethods: {
-            //
-      	},
-        hooks: {
-            //
-      }
-
-  });
-
-
+	getterMethods: {
+		starRating: function() {
+			//getReviews()?
+			// get average of all reviews with this productId something like this?  //Math.floor(foundReviews.reduce(function(prev, current) {
+			//return prev.rating + current.rating
+			//} / foundReviews.length))
+		}
+	}
+}, {
+	classMethods: {
+		//
+	},
+	instanceMethods: {
+		//
+	},
+	hooks: {
+		//
+	}
+});
 module.exports = Product;
