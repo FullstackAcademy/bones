@@ -3,7 +3,11 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import {Router, Route, IndexRedirect, browserHistory, hashHistory} from 'react-router'
 import {connect, Provider} from 'react-redux'
+
 import {loadProducts} from './action-creators/Catalog'
+import {loadSession} from './action-creators/LoadSession'
+
+
 import App from './components/app'
 import store from './store'
 import Login from './components/Login'
@@ -20,6 +24,8 @@ import axios from 'axios'
 const onLoginEnter = function() {}
 const onAppEnter = function() {
 	store.dispatch(loadProducts())
+	store.dispatch(loadSession())
+
 }
 
 ReactDOM.render(
