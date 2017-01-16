@@ -1,14 +1,37 @@
 const db = require('APP/db')
 const seedUsers = () => db.Promise.map([
-	{
-		userName: 'so many',
-		email: 'god@example.com',
-		password: '1234'
-	}, {
-		userName: 'Barack Obama',
-		email: 'barack@example.gov',
-		password: '1234'
-	}
+  {
+    userName: "ZurkBeast",
+    firstName: "Zurk",
+    lastName: "Beast",
+    email: "Zurk@Beast.com",
+    password: "1234"
+  }, {
+    userName: "Deadpool",
+    firstName: "Ryan",
+    lastName: "Reynolds",
+    email: "itscrazyIhavekids@gmail.com",
+    password: "1234"
+  }, {
+    userName: "theJanitor",
+    firstName: "The",
+    lastName: "Janitor",
+    email: "janitor@scrubs.com",
+    password: "1234"
+  }, {
+    userName: "Superman",
+    firstName: "Clark",
+    lastName: "Kent",
+    email: "clarkkentisNOTsuperman@gmail.com",
+    password: "1234"
+  }, {
+      userName: "IMBATMAN",
+      firstName:
+      "Batman",
+      lastName: "Batman",
+      email: "batman@batman.com",
+      password: "1234"
+    }
 ], user => db.model('users').create(user))
 const seedProducts = () => db.Promise.map([
 	{
