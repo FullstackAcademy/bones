@@ -9,7 +9,9 @@ import {whoami} from './reducers/auth';
 const store = createStore(
 	rootReducer,
 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-	applyMiddleware(createLogger(), thunkMiddleware)
+	applyMiddleware(
+		// createLogger(),
+		 thunkMiddleware)
 );
 
 export default store;

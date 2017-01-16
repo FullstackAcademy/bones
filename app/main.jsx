@@ -10,7 +10,6 @@ import Login from './components/Login'
 import NewUserForm from './components/NewUserForm'
 
 import UserContainer from './containers/UserContainer'
-import PaintCatalogContainer from './containers/PaintCatalogContainer'
 import HomeContainer from './containers/HomeContainer'
 import CheckoutContainer from './containers/CheckoutContainer'
 import MyOrdersContainer from './containers/MyOrdersContainer'
