@@ -12,12 +12,12 @@ import App from './components/app'
 import store from './store'
 import Login from './components/Login'
 import NewUserForm from './components/NewUserForm'
-
-import UserContainer from './containers/UserContainer'
+import PaintCatalogContainer from './containers/PaintCatalogContainer'
 import HomeContainer from './containers/HomeContainer'
 import CheckoutContainer from './containers/CheckoutContainer'
 import MyOrdersContainer from './containers/MyOrdersContainer'
 import CatalogContainer from './containers/catalogContainer'
+import AccountSettingsContainer from './containers/AccountSettingsContainer'
 
 import axios from 'axios'
 
@@ -33,7 +33,7 @@ ReactDOM.render(
 	<Router history={hashHistory}>
 		<Route path="/" component={App} onEnter={onAppEnter}>
 			<Route path='/home' component={HomeContainer}/>
-			<Route path="/user" component={UserContainer}/>
+			<Route path="/account" component={ AccountSettingsContainer }/>
 			<Route path="/login" component={Login}/>
 			<Route path="/usersignup" component={NewUserForm}/>
 			<Route path='/checkout' component={CheckoutContainer}/>

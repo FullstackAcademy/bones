@@ -1,13 +1,11 @@
 import React, {Component} from 'react'
 import { hashHistory, Router, Route, Link } from 'react-router'
 import axios from 'axios'
-import { login, whoami } from  '../reducers/auth'
+import { whoami } from  '../reducers/auth'
 import store from '../store'
 
-
-// refactor to be a dumb component wrapped by UserContainer:
-
-export default class NewUserForm extends Component {
+// AuthUser and AdminUser can edit account settings
+export default class AccountSettings extends Component {
 
 	constructor(props) {
 	super(props);
@@ -43,9 +41,9 @@ handlePasswordChange(event) {
 }
 
 handleSubmit(event) {
-	event.preventDefault(event); // On submit of the form, send a POST request with the data to the server.
-// abstract this to the container
-	 return axios.post('/api/users', {
+	event.preventDefault(event);
+	// On submit of the form, send a PUT request with the data to the server.
+	 return axios.put('/api/users', {
 		userName: this.state.userName,
 		firstName: this.state.firstName,
 		lastName: this.state.lastName,
@@ -53,7 +51,7 @@ handleSubmit(event) {
 		password: this.state.password
 	})
 	.then(response => store.dispatch(login(response.data.email, response.data.password)))
-	.then( () => hashHistory.push('/account'))
+	.then( () => hashHistory.push('/user'))
 	.catch(err => console.error(err.stack));
 }
 

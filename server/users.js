@@ -14,21 +14,24 @@ module.exports = require('express').Router()
 	  })
 	  .catch(next)
 	})
+
 	.get('/', forbidden('only admins can list users'), (req, res, next) =>
 		User.findAll()
 		.then(users => res.json(users))
 		.catch(next))
-	.post('/', (req, res, next) => {
 
+	.post('/', (req, res, next) => {
 		console.log('req.body', req.body)
 		User.create(req.body)
 		.then(user => res.status(201).json(user))
 		.catch(next)
 	})
+
 	.get('/:id', mustBeLoggedIn, (req, res, next) =>
 		User.findById(req.params.id)
 		.then(user => res.json(user))
 		.catch(next))
+
 	.put('/:id', (req, res, next) => {
 		req.requestedUser.update(req.body)
 		.then(updatedUser => {
