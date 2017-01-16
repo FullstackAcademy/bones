@@ -36,35 +36,35 @@ describe('Order suite', () => {
 		     	})
 		})
 
-		it('Order customerType changes from guest to registered', () => {
-			let creatingUser = User.create({
-			userName: 'Cosmo',
-			password: 'Kramer',
-			email: 'nyc@gmail.com'
-			})
-			let creatingOrder = Order.create({customerType: 'guest'})
-				return Promise.all([creatingUser, creatingOrder])
-		     	.then(([createdUser, createdOrder]) => {
-		     		return createdUser.addOrder(createdOrder)
-		     	})
-		     	.then(result => {
-		     		return Order.findOne({
-		     			where: {
-		     				user_id: result.id
-		     			}
-		     		})
-		     	})
-		     	.then(foundOrder => {
-		     		expect(foundOrder.user_id).to.exist
-		     		expect(foundOrder.customerType).to.equal('guest')
-		     		return foundOrder.update({
-		     			customerType: 'registered'
-		     		})
-		     	})
-		     	.then(updatedOrder => {
-		     		expect(updatedOrder.customerType).to.equal('registered')
-		     	})
-		})
+		// it('Order customerType changes from guest to registered', () => {
+		// 	let creatingUser = User.create({
+		// 	userName: 'Cosmo',
+		// 	password: 'Kramer',
+		// 	email: 'nyc@gmail.com'
+		// 	})
+		// 	let creatingOrder = Order.create({customerType: 'guest'})
+		// 		return Promise.all([creatingUser, creatingOrder])
+		//      	.then(([createdUser, createdOrder]) => {
+		//      		return createdUser.addOrder(createdOrder)
+		//      	})
+		//      	.then(result => {
+		//      		return Order.findOne({
+		//      			where: {
+		//      				user_id: result.id
+		//      			}
+		//      		})
+		//      	})
+		//      	.then(foundOrder => {
+		//      		expect(foundOrder.user_id).to.exist
+		//      		expect(foundOrder.customerType).to.equal('guest')
+		//      		return foundOrder.update({
+		//      			customerType: 'registered'
+		//      		})
+		//      	})
+		//      	.then(updatedOrder => {
+		//      		expect(updatedOrder.customerType).to.equal('registered')
+		//      	})
+		// })
 	})
 
 })
