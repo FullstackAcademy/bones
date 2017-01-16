@@ -13,8 +13,7 @@ export default class NewUserForm extends Component {
 			firstName: '',
 			lastName: '',
 			email: '',
-			password: '',
-			editing: false
+			password: ''
 		};
 
 		this.handleUserNameChange = this.handleUserNameChange.bind(this);
@@ -22,8 +21,6 @@ export default class NewUserForm extends Component {
 		this.handleLastNameChange = this.handleLastNameChange.bind(this);
 		this.handleEmailChange = this.handleEmailChange.bind(this);
 		this.handlePasswordChange = this.handlePasswordChange.bind(this);
-
-		const editing = this.state.editing;
 
 		this.handleSubmit = this.handleSubmit.bind(this);
 }
@@ -45,7 +42,7 @@ handlePasswordChange(event) {
 }
 
 handleSubmit(event) {
-	event.preventDefault();
+	event.preventDefault(event);
 	// On submit of the form, send a POST request with the data to the server.
 	 return axios.post('/api/users', {
 		userName: this.state.userName,
@@ -56,7 +53,7 @@ handleSubmit(event) {
 	})
 	.then(response => store.dispatch(login(response.data.email, response.data.password)))
 	.then( () => hashHistory.push('/user'))
-// here we need to handle button change to edit
+// here we need to handle button change to edit once logged in
 	.catch(err => console.error(err.stack));
 }
 
