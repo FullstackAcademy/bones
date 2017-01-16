@@ -1,3 +1,18 @@
 .cart-text {
 	text-align: right;
 }
+
+.ourBtn {
+	color: white;
+	display: inline;
+	margin-right: 10px;
+	margin-left: 15px;
+}
+
+.divider {
+	width: 5px
+}
+
+.btnGroup {
+	display: inline;
+}
