@@ -5,14 +5,13 @@ import {Router, Route, IndexRedirect, browserHistory, hashHistory} from 'react-r
 import {connect, Provider} from 'react-redux'
 
 import {loadProducts} from './action-creators/Catalog'
-import {loadSession} from './action-creators/LoadSession'
+import {reloadSession} from './action-creators/Cart'
 
 
 import App from './components/app'
 import store from './store'
 import Login from './components/Login'
 import NewUserForm from './components/NewUserForm'
-import PaintCatalogContainer from './containers/PaintCatalogContainer'
 import HomeContainer from './containers/HomeContainer'
 import CheckoutContainer from './containers/CheckoutContainer'
 import MyOrdersContainer from './containers/MyOrdersContainer'
@@ -24,7 +23,7 @@ import axios from 'axios'
 const onLoginEnter = function() {}
 const onAppEnter = function() {
 	store.dispatch(loadProducts())
-	store.dispatch(loadSession())
+	store.dispatch(reloadSession())
 
 }
 

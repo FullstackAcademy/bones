@@ -33,7 +33,7 @@ Router.get('/',(req,res,next)=>{
 })
 
 Router.post('/' ,(req, res, next) =>
-{console.log('req.body', req.body)
+{
   Order.create(req.body)
   .then(addedOrder => {
     req.session.order = {id: addedOrder.id}

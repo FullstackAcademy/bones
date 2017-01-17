@@ -4,7 +4,7 @@ import React from 'react';
 export default class User extends React.Component {
 	constructor(props) {
 		super(props)
-		console.log('this.props:', this.props)
+		// console.log('this.props:', this.props)
 	}
     render() {
 

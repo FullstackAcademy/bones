@@ -16,7 +16,7 @@ const Address = require('./address');
 // creates join-table 'productOrders'
 // NOTE: replaced above with LineItem pattern given industry pattern and it works
 
-User.hasMany(Order, {as: 'Orders'});
+User.hasMany(Order);
 // creates 'userId' on orders
 
 Product.hasMany(Review);
