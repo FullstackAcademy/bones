@@ -16,3 +16,7 @@
 .btnGroup {
 	display: inline;
 }
+
+.parallax img{
+      display: inherit !important;
+}

@@ -1,8 +1,15 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import AccountSettings from '../components/AccountSettings'
+import { connect } from 'react-redux';
+import {AccountSettings} from '../components/AccountSettings';
+import { updateUser } from '../reducers/auth';
 
-const mapStateToProps = (state) => {};
+const mapStateToProps = (state, ownProps) => {
+  return { auth: state.auth };
+};
 
-export default connect(
-	mapStateToProps, {})(AccountSettings)
+const mapDispatchToProps = (dispatch, ownProps) => {
+// return {};
+  return { updateUser: (user) => dispatch( updateUser(user) )} ;
+};
+
+//this is breaking the site
+export default connect(mapStateToProps, mapDispatchToProps)(AccountSettings);

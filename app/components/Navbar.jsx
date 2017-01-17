@@ -44,7 +44,7 @@ handleClearCart(orderId){
 								<Link to='/myorders'>My Orders</Link>
 							</li>
 							<li>
-								<Link to='/account'>Account Settings</Link>
+								<Link to='/account'>Account</Link>
 							</li>
 							<li className="divider"></li>
 							<li onClick={this.props.onLogout}>Log Out</li>
