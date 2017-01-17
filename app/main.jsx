@@ -18,9 +18,11 @@ import MyOrdersContainer from './containers/MyOrdersContainer'
 import CatalogContainer from './containers/catalogContainer'
 import AccountSettingsContainer from './containers/AccountSettingsContainer'
 
+
 import axios from 'axios'
 
 const onLoginEnter = function() {}
+
 const onAppEnter = function() {
 	store.dispatch(loadProducts())
 	store.dispatch(reloadSession())
@@ -32,7 +34,7 @@ ReactDOM.render(
 	<Router history={hashHistory}>
 		<Route path="/" component={App} onEnter={onAppEnter}>
 			<Route path='/home' component={HomeContainer}/>
-			<Route path="/account" component={ AccountSettingsContainer }/>
+			<Route path="/account" component={AccountSettingsContainer}/>
 			<Route path="/login" component={Login}/>
 			<Route path="/usersignup" component={NewUserForm}/>
 			<Route path='/checkout' component={CheckoutContainer}/>
