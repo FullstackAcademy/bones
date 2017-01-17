@@ -5,12 +5,7 @@ import store from '../store'
 
  export default class Catalog extends Component {
 constructor(props){
-	super(props)
-	this.handleAddCart = this.handleAddCart.bind(this)
-}
-
-handleAddCart(userId, order, productId){
-	store.dispatch(this.props.addToCart(userId, order, productId))
+	super(props);
 }
 
 
@@ -18,7 +13,7 @@ render(){
 		return (
 			<div>
         {
-        //  console.log('this.props', this.props)
+         console.log('this.props', this.props)
         }
 				<h3 className="center-align">{this.props.category.charAt(0).toUpperCase() + this.props.category.slice(1)} Catalog</h3>
 				<div className='row'>
@@ -38,7 +33,7 @@ render(){
 							          <p>{product.description}</p>
 							          <p><Link className="thumbnail" to={`/products/${product.id}`}>Details</Link></p>
 							        </div>
-							        <div className="card-action cart-text" onClick={()=> {this.handleAddCart(this.props.auth.id, this.props.Session.order, product.id)}} >
+							        <div className="card-action cart-text" onClick={()=> {this.props.addToCart(this.props.auth.id, this.props.Session.order, product.id)}} >
 							          Add<i className="material-icons">shopping_cart</i>{product.unitPrice}
 							        </div>
 							      </div>

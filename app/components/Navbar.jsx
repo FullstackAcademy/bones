@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
+import store from '../store'
 
 const defaultStyle = {
 	marginLeft: 20
 }
 
 export default class Navbar extends Component {
+	constructor(props){
+		super(props)
+
+	}
 
 	componentDidMount() {
 		var element = ReactDOM.findDOMNode(this.refs.dropdown)
@@ -14,12 +19,15 @@ export default class Navbar extends Component {
 			$(".dropdown-button").dropdown();
 		});
 	}
+
+
 	render() {
 		return (
 			<div>
+				{console.log('navprops', this.props)}
 				<ul id="dropdown1" className="dropdown-content">
-					<li>
-						<a href="#!">Clear Cart</a>
+					<li> <a onClick = {() => this.props.dumpCartItems(this.props.order.id)
+                        }>Clear Cart</a>
 					</li>
 					<li>
 						<Link to='/checkout'>Checkout</Link>
@@ -34,7 +42,7 @@ export default class Navbar extends Component {
 								<Link to='/account'>Account</Link>
 							</li>
 							<li className="divider"></li>
-							<li onClick={this.props.onLogout}>Log Out</li>
+							<li onClick={ ()=> this.props.onLogout}>Log Out</li>
 						</ul>
 					: <ul id="dropdown2" className="dropdown-content">
 						<li>

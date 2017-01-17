@@ -7,7 +7,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-// return {};
   return { updateUser: (user) => dispatch( updateUser(user) )} ;
 };
 

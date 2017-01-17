@@ -10,8 +10,6 @@ const loadSESSION = function(session) {
 	}
 }
 
-
-
 export  function addToCart (userId, order, productId) {
 	return function(dispatch, getState) {
 			let authId = {}
@@ -72,4 +70,15 @@ export function reloadSession (){
 			})
 		 	.catch(err => console.error(err))
 	 }
+}
+
+export function dumpCartItems(orderId) {
+	return function(dispatch, getState){
+		//axios.delete(`api/lineItems`, {where: {order_id : orderId}})
+      axios({method: 'delete', url:'api/lineItems', data:{where: {order_id : orderId}} })
+		.then((removed) => {
+            Materialize.toast('Your cart has been deleted', 4000);
+			dispatch(reloadSession())
+		})
+	}
 }
