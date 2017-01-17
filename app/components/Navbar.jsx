@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
-//import { logout } from '../reducers/auth';
 
 const defaultStyle = {
 	marginLeft: 20
@@ -32,7 +31,7 @@ export default class Navbar extends Component {
 								<Link to='/myorders'>My Orders</Link>
 							</li>
 							<li>
-								<Link to='/account'>Account Settings</Link>
+								<Link to='/account'>Account</Link>
 							</li>
 							<li className="divider"></li>
 							<li onClick={this.props.onLogout}>Log Out</li>
