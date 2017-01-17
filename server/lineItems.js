@@ -36,7 +36,7 @@ res.json(req.singleLine)
 Router.put('/:id',(req, res, next)=>{
   req.singleLine.update(req.body)
   .then(updatedLine =>{
-    res.json(updatedLine)
+    res.json(updatedLine);
   })
 })
 

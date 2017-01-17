@@ -10,7 +10,7 @@ export default function() {
         </div>
         <div className="section white">
           <div className="row container">
-            <h2 className="header">Parallax</h2>
+            <h2 className="header">The most incredible paints and tools</h2>
 
             <p className="grey-text text-darken-3 lighten-3">Insert pic or other stuff here</p>
           </div>

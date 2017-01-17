@@ -19,7 +19,9 @@ import CheckoutContainer from './containers/CheckoutContainer'
 import MyOrdersContainer from './containers/MyOrdersContainer'
 import CatalogContainer from './containers/catalogContainer'
 import ProductDetailsContainer from './containers/ProductDetailsContainer'
+
 import AccountSettingsContainer from './containers/AccountSettingsContainer'
+import MyCartContainer from './containers/MyCartContainer'
 
 
 import axios from 'axios'
@@ -43,6 +45,7 @@ ReactDOM.render(
 			<Route path='/home' component={HomeContainer}/>
 			<Route path="/account" component={AccountSettingsContainer}/>
 			<Route path="/login" component={Login}/>
+			<Route path="/mycart" component={MyCartContainer}/>
 			<Route path="/usersignup" component={NewUserForm}/>
 			<Route path='/checkout' component={CheckoutContainer}/>
 			<Route path='/myorders' component={MyOrdersContainer}/>
