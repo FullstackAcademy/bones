@@ -27,6 +27,13 @@ const User = db.define('users', {
 	}
 }, {
 	indexes: [{fields: ['email'], unique: true}],
+  scopes: {
+		orders: () => ({
+			include: [{
+				model: db.model('orders').scope('lineItems')
+			}]
+		})
+	},
   hooks: {
     beforeCreate: setEmailAndPassword,
     beforeUpdate: setEmailAndPassword,

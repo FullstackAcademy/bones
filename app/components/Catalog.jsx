@@ -36,7 +36,7 @@ render(){
 							        <div className="card-content">
 							          <p>{product.description}</p>
 							        </div>
-							        <div className="card-action cart-text" onClick={()=> {this.handleAddCart(this.props.auth.id, this.props.Cart.order, product.id)}} >
+							        <div className="card-action cart-text" onClick={()=> {this.handleAddCart(this.props.auth.id, this.props.Session.order, product.id)}} >
 							          Add<i className="material-icons">shopping_cart</i>{product.unitPrice}
 							        </div>
 							      </div>

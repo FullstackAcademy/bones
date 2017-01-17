@@ -1,17 +1,14 @@
-import {CREATE_ORDER, LOAD_CART} from '../constants'
+import {ADD_TO_SESSION} from '../constants'
 
 export default function (state = {}, action)  {
   const newState = Object.assign({}, state);
 
 	switch(action.type) {
 
-		case CREATE_ORDER:
-        newState.order = action.addedOrder
-			break
 
-    case LOAD_CART:
-      newState.order = action.loadedOrder
-      break
+    case ADD_TO_SESSION:
+      newState.order = action.session
+      break;
 
 		default:
 			return state

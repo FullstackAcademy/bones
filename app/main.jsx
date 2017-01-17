@@ -5,7 +5,7 @@ import {Router, Route, IndexRedirect, browserHistory, hashHistory} from 'react-r
 import {connect, Provider} from 'react-redux'
 
 import {loadProducts} from './action-creators/Catalog'
-import {loadSession} from './action-creators/LoadSession'
+import {reloadSession} from './action-creators/Cart'
 
 
 import App from './components/app'
@@ -23,7 +23,7 @@ import axios from 'axios'
 const onLoginEnter = function() {}
 const onAppEnter = function() {
 	store.dispatch(loadProducts())
-	store.dispatch(loadSession())
+	store.dispatch(reloadSession())
 
 }
 
