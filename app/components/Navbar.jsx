@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
-//import { logout } from '../reducers/auth';
 import store from '../store'
 
 const defaultStyle = {
@@ -11,7 +10,7 @@ const defaultStyle = {
 export default class Navbar extends Component {
 	constructor(props){
 		super(props)
-		this.handleClearCart = this.handleClearCart.bind(this)
+
 	}
 
 	componentDidMount() {
@@ -21,18 +20,14 @@ export default class Navbar extends Component {
 		});
 	}
 
-handleClearCart(orderId){
-	store.dispatch(this.props.dumpCartItems(orderId))
-}
-
 
 	render() {
 		return (
 			<div>
 				{console.log('navprops', this.props)}
 				<ul id="dropdown1" className="dropdown-content">
-					<li>
-						<a onClick = {()=>this.handleClearCart(this.props.order.id)}>Clear Cart</a>
+					<li> <a onClick = {() => this.props.dumpCartItems(this.props.order.id)
+                        }>Clear Cart</a>
 					</li>
 					<li>
 						<Link to='/checkout'>Checkout</Link>
@@ -47,7 +42,7 @@ handleClearCart(orderId){
 								<Link to='/account'>Account</Link>
 							</li>
 							<li className="divider"></li>
-							<li onClick={this.props.onLogout}>Log Out</li>
+							<li onClick={ ()=> this.props.onLogout}>Log Out</li>
 						</ul>
 					: <ul id="dropdown2" className="dropdown-content">
 						<li>

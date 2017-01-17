@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return { onLogout: () => dispatch(logout()),
-    dumpCartItems: (orderId)=> {dispatch(orderId)}} ;
+    dumpCartItems: (orderId) => {dispatch(dumpCartItems(orderId))}} ;
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
