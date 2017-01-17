@@ -1,4 +1,4 @@
-import {RECEIVE_PRODUCTS} from '../constants'
+import {RECEIVE_PRODUCTS, RECEIVE_PRODUCT} from '../constants'
 
 export default function (state = {}, action)  {
 
@@ -10,6 +10,10 @@ export default function (state = {}, action)  {
 			newState.products = action.products
 			break
 
+		case RECEIVE_PRODUCT:
+			newState.product = action.product
+			break
+			
 		default:
 			return state
 	}

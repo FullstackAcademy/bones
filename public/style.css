@@ -20,3 +20,8 @@
 .parallax img{
       display: inherit !important;
 }
+
+p {
+	display: inline;
+	float: right;
+}
