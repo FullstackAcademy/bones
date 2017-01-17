@@ -4,12 +4,8 @@ import ReactDOM from 'react-dom';
 import {Router, Route, IndexRedirect, browserHistory, hashHistory} from 'react-router'
 import {connect, Provider} from 'react-redux'
 
-import { loadProducts } from './action-creators/Catalog'
-import {reloadSession} from './action-creators/Cart'
-import {getProduct} from './action-creators/Catalog'
-
-
-
+import { loadProducts, getProduct } from './action-creators/Catalog'
+import {reloadSession, buildLineItems} from './action-creators/Cart'
 import App from './components/app'
 import store from './store'
 import Login from './components/Login'
@@ -22,7 +18,6 @@ import ProductDetailsContainer from './containers/ProductDetailsContainer'
 
 import AccountSettingsContainer from './containers/AccountSettingsContainer'
 import MyCartContainer from './containers/MyCartContainer'
-
 
 import axios from 'axios'
 
@@ -38,6 +33,10 @@ const onProductEnter = function(nextRouterState) {
 	store.dispatch(getProduct(productId))
 }
 
+const onMyCartEnter = function() {
+	store.dispatch(buildLineItems())
+}
+
 ReactDOM.render(
 	<Provider store={store}>
 	<Router history={hashHistory}>
@@ -45,7 +44,7 @@ ReactDOM.render(
 			<Route path='/home' component={HomeContainer}/>
 			<Route path="/account" component={AccountSettingsContainer}/>
 			<Route path="/login" component={Login}/>
-			<Route path="/mycart" component={MyCartContainer}/>
+			<Route path="/mycart" component={MyCartContainer} onEnter={onMyCartEnter}/>
 			<Route path="/usersignup" component={NewUserForm}/>
 			<Route path='/checkout' component={CheckoutContainer}/>
 			<Route path='/myorders' component={MyOrdersContainer}/>

@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import {Link} from 'react-router';
 
 
-export default function Cart(props){
+export default function MyCart(props){
 
-let lineItems = props.cart.lineItems ? props.cart : ''
+const lineItems = props.cart ? props.cart.lineItems : []
+console.log('PROPS', props)
 
-console.log('LINEITEMS', lineItems)
+//console.log('LINEITEMS', lineItems)
 
 
 		return (
