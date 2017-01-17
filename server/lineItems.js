@@ -39,11 +39,17 @@ Router.put('/:id',(req, res, next)=>{
     res.json(updatedLine)
   })
 })
+
+Router.delete('/', (req, res, next)=>{
+  LineItem.destroy(req.body)
+  .then( () => res.status(204).end())
+  .catch(next)
+})
+
 Router.delete('/:id', (req, res, next)=>{
   req.singleLine.destroy()
   .then( () => res.status(204).end())
   .catch(next)
 })
-
 
 module.exports = Router

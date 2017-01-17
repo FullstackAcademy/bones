@@ -5,12 +5,7 @@ import store from '../store'
 
  export default class Catalog extends React.Component {
 constructor(props){
-	super(props)
-	this.handleAddCart = this.handleAddCart.bind(this)
-}
-
-handleAddCart(userId, order, productId){
-	store.dispatch(this.props.addToCart(userId, order, productId))
+	super(props);
 }
 
 
@@ -36,7 +31,7 @@ render(){
 							        <div className="card-content">
 							          <p>{product.description}</p>
 							        </div>
-							        <div className="card-action cart-text" onClick={()=> {this.handleAddCart(this.props.auth.id, this.props.Session.order, product.id)}} >
+							        <div className="card-action cart-text" onClick={()=> {this.props.addToCart(this.props.auth.id, this.props.Session.order, product.id)}} >
 							          Add<i className="material-icons">shopping_cart</i>{product.unitPrice}
 							        </div>
 							      </div>
