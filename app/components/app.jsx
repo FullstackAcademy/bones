@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import NavBarContainer from '../containers/NavBarContainer'
+import NavBarContainer from '../containers/navbarContainer'
 import Home from '../components/Home'
 export default class App extends Component {
 	componentDidMount() {
