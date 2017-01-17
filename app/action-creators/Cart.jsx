@@ -73,3 +73,15 @@ export function reloadSession (){
 		 	.catch(err => console.error(err))
 	 }
 }
+
+export function dumpCartItems(orderId) {
+	console.log('got hereee')
+	return function(dispatch, getState){
+		console.log('got here')
+		axios.delete(`api/lineItems`, {where: {order_id : orderId}})
+		.then((removed)=>{
+			console.log(removed)
+			dispatch(reloadSession())
+		})
+	}
+}
