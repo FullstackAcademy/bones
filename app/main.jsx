@@ -17,7 +17,7 @@ import NewUserForm from './components/NewUserForm'
 import HomeContainer from './containers/HomeContainer'
 import CheckoutContainer from './containers/CheckoutContainer'
 import MyOrdersContainer from './containers/MyOrdersContainer'
-import CatalogContainer from './containers/catalogContainer'
+import CatalogContainer from './containers/CatalogContainer'
 import ProductDetailsContainer from './containers/ProductDetailsContainer'
 
 import AccountSettingsContainer from './containers/AccountSettingsContainer'
