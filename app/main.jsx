@@ -4,8 +4,10 @@ import ReactDOM from 'react-dom';
 import {Router, Route, IndexRedirect, browserHistory, hashHistory} from 'react-router'
 import {connect, Provider} from 'react-redux'
 
-import {loadProducts} from './action-creators/Catalog'
+import { loadProducts } from './action-creators/Catalog'
 import {reloadSession} from './action-creators/Cart'
+import {getProduct} from './action-creators/Catalog'
+
 
 
 import App from './components/app'
@@ -15,7 +17,9 @@ import NewUserForm from './components/NewUserForm'
 import HomeContainer from './containers/HomeContainer'
 import CheckoutContainer from './containers/CheckoutContainer'
 import MyOrdersContainer from './containers/MyOrdersContainer'
-import CatalogContainer from './containers/CatalogContainer'
+import CatalogContainer from './containers/catalogContainer'
+import ProductDetailsContainer from './containers/ProductDetailsContainer'
+
 import AccountSettingsContainer from './containers/AccountSettingsContainer'
 import MyCartContainer from './containers/MyCartContainer'
 
@@ -27,7 +31,11 @@ const onLoginEnter = function() {}
 const onAppEnter = function() {
 	store.dispatch(loadProducts())
 	store.dispatch(reloadSession())
+}
 
+const onProductEnter = function(nextRouterState) {
+	const productId = nextRouterState.params.productId
+	store.dispatch(getProduct(productId))
 }
 
 ReactDOM.render(
@@ -42,6 +50,7 @@ ReactDOM.render(
 			<Route path='/checkout' component={CheckoutContainer}/>
 			<Route path='/myorders' component={MyOrdersContainer}/>
 			<Route path ='/catalog/:categoryName' component={CatalogContainer} />
+			<Route path="/products/:productId" component={ProductDetailsContainer} onEnter={onProductEnter}/>
 			<IndexRedirect to='/home'/>
 		</Route>
 	</Router>
