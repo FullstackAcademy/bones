@@ -1,0 +1,22 @@
+h1, h2, h3, h4, h5 {
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
+}
+
+div {
+  font-family: 'Josefin Slab', serif;
+}
+
+body {
+  height: 100vh;
+  padding-top: 70px;
+  background: linear-gradient(to right bottom, grey, white);
+}
+
+img {
+  /*max-width: inherit;*/
+  text-align: center;
+  max-height: 100%;
+  margin: auto;
+  display: block;
+}
