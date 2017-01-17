@@ -1,6 +1,9 @@
 {
 	"name": "painthopper",
 	"version": "0.0.1",
+	"engines": {
+		"node": "7.x"
+	},
 	"description": "A happy little paint ecommerce store",
 	"main": "index.js",
 	"scripts": {
