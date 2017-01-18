@@ -6,7 +6,7 @@ import {connect, Provider} from 'react-redux'
 
 import { loadProducts } from './action-creators/Catalog'
 import {reloadSession} from './action-creators/Cart'
-import {getProduct} from './action-creators/Catalog'
+import {getProduct, getReviews} from './action-creators/Catalog'
 
 
 
@@ -36,6 +36,7 @@ const onAppEnter = function() {
 const onProductEnter = function(nextRouterState) {
 	const productId = nextRouterState.params.productId
 	store.dispatch(getProduct(productId))
+	store.dispatch(getReviews(productId))
 }
 
 ReactDOM.render(

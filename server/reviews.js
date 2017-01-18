@@ -23,7 +23,7 @@ module.exports = require('express').Router()
 
 })
 .get('/', (req, res, next) => {
-  Review.findAll()
+  Review.findAll({where: req.query})
   .then(foundReviews=> {
     res.json(foundReviews)});
 })

@@ -32,6 +32,13 @@ const Product = db.define('products', {
 		}
 	}
 }, {
+	 scopes: {
+		reviews: () => ({
+			include: [{
+				model: db.model('reviews')
+			}]
+		})
+	},
 	classMethods: {
 		//
 	},
