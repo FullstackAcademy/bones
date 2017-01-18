@@ -4,8 +4,10 @@ import ReactDOM from 'react-dom';
 import {Router, Route, IndexRedirect, browserHistory, hashHistory} from 'react-router'
 import {connect, Provider} from 'react-redux'
 
-import { loadProducts, getProduct } from './action-creators/Catalog'
-import {reloadSession } from './action-creators/Cart'
+import {reloadSession} from './action-creators/Cart'
+import {getProduct, getReviews, loadProducts} from './action-creators/Catalog'
+
+
 import App from './components/app'
 import store from './store'
 import Login from './components/Login'
@@ -31,12 +33,9 @@ const onAppEnter = function() {
 const onProductEnter = function(nextRouterState) {
 	const productId = nextRouterState.params.productId
 	store.dispatch(getProduct(productId))
+	store.dispatch(getReviews(productId))
 }
 
-// const onMyCartEnter = function() {
-// 	store.dispatch(buildLineItems())
-//
-// }
 
 ReactDOM.render(
 	<Provider store={store}>
