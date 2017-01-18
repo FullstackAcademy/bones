@@ -21,7 +21,33 @@
       display: inherit !important;
 }
 
+.RevContent {
+	text-align: left;
+	float: left;
+	display: block;
+	width: 100%;
+}
+
 p {
 	display: inline;
+	float: right;
+}
+
+.ReviewTitle {
+	text-decoration: underline;
+}
+
+.title {
+	font-weight: bold;
+}
+
+.card-panel {
+	width: 49%;
+	float: left;
+}
+
+.reviews {
+	display: inline-block;
+	width: 49%;
 	float: right;
 }

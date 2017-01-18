@@ -24,7 +24,6 @@ export default class Navbar extends Component {
 	render() {
 		return (
 			<div>
-				{console.log('navprops', this.props)}
 				<ul id="dropdown1" className="dropdown-content">
 					<li> <a onClick = {() => this.props.dumpCartItems(this.props.order.id)
                         }>Clear Cart</a>
