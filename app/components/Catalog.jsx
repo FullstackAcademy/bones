@@ -21,7 +21,6 @@ render(){
 						if(product.category === this.props.category)
 							return (
 							  <div className="col s12 m6 l3 card-panel hoverable" key={product.id}>
-								
 							    <h5 className="header">{product.title}</h5>
 							    <div className="card horizontal">
 							      <div className="card-image">
