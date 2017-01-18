@@ -13,7 +13,6 @@ render(){
 		return (
 			<div>
         {
-         console.log('this.props', this.props)
         }
 				<h3 className="center-align">{this.props.category.charAt(0).toUpperCase() + this.props.category.slice(1)} Catalog</h3>
 				<div className='row'>

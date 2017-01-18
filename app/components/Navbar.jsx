@@ -25,6 +25,9 @@ export default class Navbar extends Component {
 		return (
 			<div>
 				<ul id="dropdown1" className="dropdown-content">
+					<li>
+						<Link to='/mycart'>My Cart</Link>
+					</li>
 					<li> <a onClick = {() => this.props.dumpCartItems(this.props.order.id)
                         }>Clear Cart</a>
 					</li>
@@ -63,14 +66,15 @@ export default class Navbar extends Component {
 					<div className="nav-wrapper">
 						<Link to="/home">
 							<div className="brand-logo">
-								<i className="material-icons">cloud</i>Paint Hopper</div>
+								<i className="material-icons">format_paint</i>PaintHopper</div>
 						</Link>
 						<ul className="right hide-on-med-and-down">
 							<li>
 								<form>
 									<div className="input-field">
+
 										<input id="search" type="search" required/>
-										<label htmlFor="search">
+ 											<label htmlFor="search">
 											<i className="material-icons">search</i>
 										</label>
 										<i className="material-icons">close</i>

@@ -10,5 +10,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return { updateUser: (user) => dispatch( updateUser(user) )} ;
 };
 
-//this is breaking the site
 export default connect(mapStateToProps, mapDispatchToProps)(AccountSettings);
