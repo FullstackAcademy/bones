@@ -4,8 +4,10 @@ import { logout } from '../reducers/auth';
 import {dumpCartItems} from '../action-creators/Cart';
 
 const mapStateToProps = (state, ownProps) => {
-  return { auth: state.auth ,
-    order: state.Session.order};
+  return {
+	auth: state.auth,
+    order: state.Session.order
+	};
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

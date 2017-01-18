@@ -38,7 +38,15 @@ p {
 }
 
 .title {
-	font-weight: bold;
+	font-family: 'Archivo Black', sans-serif;
+}
+
+.subhead {
+	font-family: 'Cabin Condensed', sans-serif;
+}
+
+.brand-logo {
+	font-family: 'Archivo Black', sans-serif;
 }
 
 .card-panel {

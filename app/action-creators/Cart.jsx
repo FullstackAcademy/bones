@@ -29,7 +29,6 @@ export function addToCart(userId, order, productId) {
 			}
 		}).then(() => {
 			return axios.get(`api/orders/${currentOrderId}`).then(order => order.data).then(order => {
-				//console.log(order)
 				return order
 			})
 		}).then((order) => {
