@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Navbar from '../components/Navbar';
 import { logout } from '../reducers/auth';
-import {dumpCartItems} from '../action-creators/Cart'
+import {dumpCartItems} from '../action-creators/Cart';
 
 const mapStateToProps = (state, ownProps) => {
   return { auth: state.auth ,
