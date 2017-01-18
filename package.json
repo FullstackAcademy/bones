@@ -21,9 +21,9 @@
   "keywords": [
     "react",
     "redux",
-    "skeleton"
+    "paint"
   ],
-  "author": "Ashi Krishnan <me@ashi.works>",
+  "author": "Mazhar Black, David Rhodes, Ben Zurkow, Steve Kuo",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dfrho/paintHopper/issues"

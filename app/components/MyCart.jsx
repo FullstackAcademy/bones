@@ -9,12 +9,10 @@ export default class MyCart extends Component{
 	}
 
 render() {
-//console.log('cart', this.props.cart)
 const lineItems = this.props.cart ? this.props.cart.lineItems : [];
-//console.log('lineItems', lineItems)
 if (lineItems.length) lineItems.sort(function(a,b){
 	return a.id - b.id
-})
+});
 
 		return (
 			<div>

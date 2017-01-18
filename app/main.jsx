@@ -11,6 +11,7 @@ import {getProduct, getReviews, loadProducts} from './action-creators/Catalog'
 import App from './components/app'
 import store from './store'
 import Login from './components/Login'
+import ThankYou from './components/ThankYou'
 import NewUserForm from './components/NewUserForm'
 import HomeContainer from './containers/HomeContainer'
 import CheckoutContainer from './containers/CheckoutContainer'
@@ -42,6 +43,7 @@ ReactDOM.render(
 	<Router history={hashHistory}>
 		<Route path="/" component={App} onEnter={onAppEnter}>
 			<Route path='/home' component={HomeContainer}/>
+			<Route path="/thankyou" component={ThankYou}/>
 			<Route path="/account" component={AccountSettingsContainer}/>
 			<Route path="/login" component={Login}/>
 			<Route path="/mycart" component={MyCartContainer}/>

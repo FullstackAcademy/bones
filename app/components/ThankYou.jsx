@@ -10,9 +10,8 @@ export default function() {
         </div>
         <div className="section white">
           <div className="row container">
-            <h2 className="title">The most vibrant paint colors and accessories</h2>
-
-            <h4 className="subhead">At the best prices </h4>
+            <h3 className="subhead">Thanks for your purchase!</h3>
+            <p className="grey-text text-darken-3 lighten-3">Check your inbox for your receipt, and please leave a review.</p>
           </div>
         </div>
         <div className="parallax-container">
