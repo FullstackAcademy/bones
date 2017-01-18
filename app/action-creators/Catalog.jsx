@@ -1,4 +1,4 @@
-import {RECEIVE_PRODUCTS, RECEIVE_PRODUCT} from '../constants'
+import {RECEIVE_PRODUCTS, RECEIVE_PRODUCT, RECEIVE_REVIEWS} from '../constants'
 import axios from 'axios'
 
 const receiveProducts = function(products) {
@@ -12,6 +12,13 @@ const receiveProduct = function(product) {
 	return {
 		type: RECEIVE_PRODUCT,
 		product
+	}
+}
+
+const receiveReviews = function(reviews) {
+	return {
+		type: RECEIVE_REVIEWS,
+		reviews
 	}
 }
 
@@ -36,3 +43,16 @@ export const getProduct = function(productId) {
 		.catch(err => console.error(err))
 	}
 }
+
+export const getReviews = function(productId) {
+		return function(dispatch, getState) {
+		return axios.get(`/api/reviews/`, {where: {product_id: productId}})
+		.then(res => res.data)
+		.then(review => {
+			dispatch(receiveReviews(review))
+		})
+		.catch(err => console.error(err))
+	}
+}
+
+//		return axios.get(`/api/reviews?product_id=${productId}`)
