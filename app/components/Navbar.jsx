@@ -76,17 +76,9 @@ export default class Navbar extends Component {
 								<i className="material-icons">format_paint</i>PaintHopper</div>
 						</Link>
 						<ul className="right hide-on-med-and-down">
-							<li>
-
+			
 								<Search />
-
-
-
-
-
-
-
-							</li>
+							
 							<li>
 								<a className='dropdown-button' href='#' data-activates='dropdown1'>
 									<i className="material-icons">shopping_cart</i>
