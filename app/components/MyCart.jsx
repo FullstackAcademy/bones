@@ -3,29 +3,45 @@ import ReactDOM from 'react-dom';
 import {Link} from 'react-router';
 
 
-export default function Cart(props){
+export default class MyCart extends Component{
+	constructor(props){
+		super(props)
+	}
 
-let lineItems = props.cart.lineItems ? props.cart : ''
-
-console.log('LINEITEMS', lineItems)
-
+render() {
+//console.log('cart', this.props.cart)
+const lineItems = this.props.cart ? this.props.cart.lineItems : [];
+//console.log('lineItems', lineItems)
+if (lineItems.length) lineItems.sort(function(a,b){
+	return a.id - b.id
+})
 
 		return (
 			<div>
-				{console.log('props:', props)}
-				<h2>Checkout Page</h2>
+				<h3>My Cart</h3>
+				<br/>
+				<Link to='/checkout' className="waves-effect waves-light btn-large"><i className="material-icons left">attach_money</i>Checkout</Link>
 				<ul className="collection">
-			      <li className="collection-item avatar">
-			        <i className="material-icons circle">folder</i>
-			        <span className="title">Title</span>
-			        <p>First Line <br/>
-			           Second Line
-			        </p>
-			        <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
-			      </li>
+				{
+					lineItems.length && lineItems.map( (lineItem, index) =>  (
+							<li key={index} className="collection-item avatar">
+							  <Link to={`products/${lineItem.product.id}`}><i className="material-icons circle">folder</i></Link>
+							  <span className="title">{lineItem.product.title}</span><br/>
+							  <p><br/>
+								Unit Price: {lineItem.product.unitPrice}, Quantity: {lineItem.count}, SubTotal: ${(lineItem.product.unitPrice * lineItem.count).toFixed(2)}
+							  </p>
 
+							  <div className="secondary-content"><i className="material-icons" onClick={()=> {this.props.addToCart(this.props.state.auth.id, this.props.state.Session.order, lineItem.product.id)}}>exposure_plus_1</i>
+								<i onClick={ () => this.props.deleteFromCart(lineItem.id)} className="material-icons">remove_shopping_cart</i></div>
+							</li>
+						)
+					)
+				}
 			    </ul>
+
 
 		  </div>
 		)
+	}
+
 }

@@ -1,4 +1,4 @@
-import {ADD_TO_SESSION} from '../constants'
+import {ADD_TO_SESSION, CREATE_LINE_ITEMS} from '../constants'
 
 export default function (state = {}, action)  {
   const newState = Object.assign({}, state);
@@ -7,12 +7,13 @@ export default function (state = {}, action)  {
 
 
     case ADD_TO_SESSION:
-      newState.order = action.session
-      break;
-
-		default:
-			return state
+		newState.order = action.session
+		break;
+	case CREATE_LINE_ITEMS:
+		newState.lineItems = action.lineItems
+		break;
+	default:
+		return state
 	}
-  // console.log('newState', newState)
 	return newState
 }

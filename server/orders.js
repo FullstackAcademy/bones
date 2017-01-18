@@ -5,17 +5,17 @@ const Order = db.model('orders')
 const User = db.model('users')
 
 const Router = require('express').Router()
-Router.get('/isOrder', (req, res, next)=>{
+Router.get('/isOrder', (req, res, next) => {
   res.json(req.session)
 })
 
-Router.param('id',(req,res,next,id)=>{
-  if(isNaN(id)) res.sendStatus(500)
+Router.param('id', (req, res, next, id) => {
+  if (isNaN(id)) res.sendStatus(500)
   else {
     Order.scope('lineItems').findById(id)
-    .then(foundOrder=>{
+    .then( foundOrder => {
       req.singleOrder = foundOrder
-      if(!foundOrder) res.sendStatus(404)
+      if (!foundOrder) res.sendStatus(404)
       next()
       return null;
     })
@@ -23,16 +23,16 @@ Router.param('id',(req,res,next,id)=>{
   }
 })
 
-Router.use('/cart', (req, res, next)=>{
+Router.use('/cart', (req, res, next) => {
   req.session.cart = req.body
 })
 
-Router.get('/',(req,res,next)=>{
+Router.get('/', (req, res, next) => {
   Order.scope('lineItems').findAll()
-  .then(allOrders=> res.json(allOrders))
+  .then( allOrders => res.json(allOrders))
 })
 
-Router.post('/' ,(req, res, next) =>
+Router.post('/', (req, res, next) =>
 {
   Order.create(req.body)
   .then(addedOrder => {
@@ -41,11 +41,9 @@ Router.post('/' ,(req, res, next) =>
   .catch(next)
 })
 
-Router.get('/:id',(req,res,next)=>{
+Router.get('/:id', (req, res, next) => {
 res.json(req.singleOrder)
 })
-
-
 
 Router.put('/:id',(req, res, next)=>{
   req.singleOrder.update(req.body)

@@ -5,13 +5,18 @@ const LineItem = db.model('lineItem')
 
 const Router = require('express').Router()
 
-Router.param('id',(req,res,next,id)=>{
+Router.get('/assignlineitems', (req,res,next)=>{
+  LineItem.findAll()
+  .then(allLines=> res.json(allLines))
+})
+
+Router.param('id', (req, res, next, id) => {
   if(isNaN(id)) res.sendStatus(500)
   else {
     LineItem.findById(id)
-    .then(foundLine=>{
+    .then(foundLine => {
       req.singleLine = foundLine
-      if(!foundLine) res.sendStatus(404)
+      if (!foundLine) res.sendStatus(404)
       next()
       return null;
     })
@@ -19,21 +24,21 @@ Router.param('id',(req,res,next,id)=>{
   }
 })
 
-Router.get('/',(req,res,next)=>{
-  LineItem.findAll()
-  .then(allLines=> res.json(allLines))
+Router.get('/', (req, res, next) => {
+  LineItem.scope('products').findAll()
+  .then(allLines => res.json(allLines))
 })
 
-Router.post('/' ,(req, res, next) =>
+Router.post('/' , (req, res, next) =>
   LineItem.create(req.body)
   .then(addedLine => res.status(201).json(addedLine))
   .catch(next))
 
-Router.get('/:id',(req,res,next)=>{
+Router.get('/:id', (req, res, next) => {
 res.json(req.singleLine)
 })
 
-Router.put('/:id',(req, res, next)=>{
+Router.put('/:id', ( req, res, next) => {
   req.singleLine.update(req.body)
   .then(updatedLine =>{
     res.json(updatedLine);

@@ -4,10 +4,8 @@ import ReactDOM from 'react-dom';
 import {Router, Route, IndexRedirect, browserHistory, hashHistory} from 'react-router'
 import {connect, Provider} from 'react-redux'
 
-import { loadProducts } from './action-creators/Catalog'
 import {reloadSession} from './action-creators/Cart'
-import {getProduct, getReviews} from './action-creators/Catalog'
-
+import {getProduct, getReviews, loadProducts} from './action-creators/Catalog'
 
 
 import App from './components/app'
@@ -23,14 +21,13 @@ import ProductDetailsContainer from './containers/ProductDetailsContainer'
 import AccountSettingsContainer from './containers/AccountSettingsContainer'
 import MyCartContainer from './containers/MyCartContainer'
 
-
 import axios from 'axios'
 
 const onLoginEnter = function() {}
 
 const onAppEnter = function() {
-	store.dispatch(loadProducts())
 	store.dispatch(reloadSession())
+	store.dispatch(loadProducts())
 }
 
 const onProductEnter = function(nextRouterState) {
@@ -38,6 +35,7 @@ const onProductEnter = function(nextRouterState) {
 	store.dispatch(getProduct(productId))
 	store.dispatch(getReviews(productId))
 }
+
 
 ReactDOM.render(
 	<Provider store={store}>
