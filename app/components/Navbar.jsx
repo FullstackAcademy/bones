@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
-import store from '../store'
+import store from '../store';
+import Search from '../containers/SearchContainer.jsx';
 
 const defaultStyle = {
 	marginLeft: 20
@@ -10,7 +11,8 @@ const defaultStyle = {
 export default class Navbar extends Component {
 	constructor(props){
 		super(props)
-
+		this.state = {searchValue: ''}
+		this.onInputChange = this.onInputChange.bind(this);
 	}
 
 	componentDidMount() {
@@ -20,6 +22,11 @@ export default class Navbar extends Component {
 		});
 	}
 
+	onInputChange(event){
+		event.preventDefault()
+		// console.log(event.target.value)
+		// this.setState({searchValue: ''})
+	}
 
 	render() {
 		return (
@@ -69,18 +76,9 @@ export default class Navbar extends Component {
 								<i className="material-icons">format_paint</i>PaintHopper</div>
 						</Link>
 						<ul className="right hide-on-med-and-down">
-							<li>
-								<form>
-									<div className="input-field">
-
-										<input id="search" type="search" required/>
- 											<label htmlFor="search">
-											<i className="material-icons">search</i>
-										</label>
-										<i className="material-icons">close</i>
-									</div>
-								</form>
-							</li>
+			
+								<Search />
+							
 							<li>
 								<a className='dropdown-button' href='#' data-activates='dropdown1'>
 									<i className="material-icons">shopping_cart</i>
