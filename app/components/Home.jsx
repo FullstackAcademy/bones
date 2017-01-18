@@ -12,14 +12,12 @@ export default function() {
           <div className="row container">
             <h2 className="header">The most incredible paints and tools</h2>
 
-            <p className="grey-text text-darken-3 lighten-3">Insert pic or other stuff here</p>
+            <p className="grey-text text-darken-3 lighten-3">At the best prices </p>
           </div>
         </div>
         <div className="parallax-container">
           <div className="parallax"><img src="images/parallax2.jpg" /></div>
         </div>
-
-        {/* Include a container */}
       </div>
 		)
 }

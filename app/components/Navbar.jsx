@@ -44,7 +44,7 @@ export default class Navbar extends Component {
 								<Link to='/account'>Account</Link>
 							</li>
 							<li className="divider"></li>
-							<li onClick={ ()=> this.props.onLogout}>Log Out</li>
+							<li> <a onClick={this.props.onLogout}>Log Out</a></li>
 						</ul>
 					: <ul id="dropdown2" className="dropdown-content">
 						<li>

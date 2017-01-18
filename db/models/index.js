@@ -28,6 +28,8 @@ User.hasMany(Review);
 Product.hasMany(LineItem);
 // creates 'productId' on line items
 
+LineItem.belongsTo(Product)
+
 Order.hasMany(LineItem);
 // creates 'orderId' on line items
 

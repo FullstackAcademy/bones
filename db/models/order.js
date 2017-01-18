@@ -22,7 +22,7 @@ const Order = db.define('orders', {
 	scopes :{
 		lineItems: () => ({
 			include: [{
-				model: db.model('lineItem')
+				model: db.model('lineItem').scope('products')
 			}]
 		})
 	}
