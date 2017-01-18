@@ -5,7 +5,7 @@ import {Router, Route, IndexRedirect, browserHistory, hashHistory} from 'react-r
 import {connect, Provider} from 'react-redux'
 
 import { loadProducts, getProduct } from './action-creators/Catalog'
-import {reloadSession, buildLineItems} from './action-creators/Cart'
+import {reloadSession } from './action-creators/Cart'
 import App from './components/app'
 import store from './store'
 import Login from './components/Login'
@@ -24,8 +24,8 @@ import axios from 'axios'
 const onLoginEnter = function() {}
 
 const onAppEnter = function() {
-	store.dispatch(loadProducts())
 	store.dispatch(reloadSession())
+	store.dispatch(loadProducts())
 }
 
 const onProductEnter = function(nextRouterState) {
@@ -33,9 +33,10 @@ const onProductEnter = function(nextRouterState) {
 	store.dispatch(getProduct(productId))
 }
 
-const onMyCartEnter = function() {
-	store.dispatch(buildLineItems())
-}
+// const onMyCartEnter = function() {
+// 	store.dispatch(buildLineItems())
+//
+// }
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -44,7 +45,7 @@ ReactDOM.render(
 			<Route path='/home' component={HomeContainer}/>
 			<Route path="/account" component={AccountSettingsContainer}/>
 			<Route path="/login" component={Login}/>
-			<Route path="/mycart" component={MyCartContainer} onEnter={onMyCartEnter}/>
+			<Route path="/mycart" component={MyCartContainer}/>
 			<Route path="/usersignup" component={NewUserForm}/>
 			<Route path='/checkout' component={CheckoutContainer}/>
 			<Route path='/myorders' component={MyOrdersContainer}/>

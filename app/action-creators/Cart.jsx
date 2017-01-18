@@ -1,11 +1,14 @@
 import {ADD_TO_SESSION, CREATE_LINE_ITEMS} from '../constants'
 import axios from 'axios'
+
 const loadSESSION = function(session) {
 	return {type: ADD_TO_SESSION, session}
 }
+
 const loadLineItems = lineItems => {
 	return {type: CREATE_LINE_ITEMS, lineItems}
 }
+
 export function addToCart(userId, order, productId) {
 	return function(dispatch, getState) {
 		let authId = {}
@@ -61,6 +64,7 @@ export function reloadSession() {
 		}).catch(err => console.error(err))
 	}
 }
+
 export function dumpCartItems(orderId) {
 	return function(dispatch, getState) {
 		axios({
@@ -71,23 +75,21 @@ export function dumpCartItems(orderId) {
 					order_id: orderId
 				}
 			}
-		}).then((removed) => {
+		})
+		.then((removed) => {
 			Materialize.toast('Your cart has been deleted', 4000);
 			dispatch(reloadSession())
 		})
 	};
 }
-export function buildLineItems() {
+
+export function deleteFromCart(lineItemId) {
 	return function(dispatch, getState) {
-		if (getState().Session.order) {
-			let lineItemsArr = getState().Session.order.lineItems
-			lineItemsArr.map(lineItem => {
-				axios.get(`/api/products/${lineItem.product_id}`).then(res => res.data).then(foundProduct => {
-					lineItem.product = foundProduct;
-					lineItem.subtotal = lineItem.count * foundProduct.unitPrice
-				}).catch(err => console.error(err));
-			})
-			dispatch(loadLineItems(lineItemsArr))
-		}
+		axios.delete(`api/lineItems/${lineItemId}`)
+		.then( () => {
+			Materialize.toast('The item has been deleted from your cart', 4000)
+			dispatch(reloadSession())
+		})
+		.catch(err => console.error(err))
 	}
 }

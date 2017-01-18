@@ -18,13 +18,13 @@ const lineItem = db.define('lineItem', {
     // }
 },
     {
-      // scopes :{
-    	// 	orders: () => ({
-    	// 		include: [{
-    	// 			model: db.model('orders')
-    	// 		}]
-    	// 	})
-    	// },
+      scopes :{
+    		products: () => ({
+    			include: [{
+    				model: db.model('products')
+    			}]
+    		})
+    	},
     instanceMethods: {
         increaseCount: function(val) {
 					if (val) this.count += val
