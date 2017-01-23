@@ -1,0 +1,47 @@
+.full-width {
+    width: 100%;
+}
+
+.mgn-top-lg {
+    margin-top: 30px;
+}
+
+.mgn-top-xl {
+    margin-top: 50px;
+}
+
+.pdng-top-lg {
+    padding-top: 30px;
+}
+
+.cart-side-table {
+	width: 25%;
+	float: right;
+}
+
+.cart-item-photo {
+	width: 100px;
+	height: 100px;
+}
+
+.cart-item-update-btn {
+	display: block;
+	margin: 10px;
+}
+
+.cart-item-remove-btn {
+	display: block;
+	margin: 10px;
+}
+
+.cart-empty {
+	
+}
+
+.btn-checkout {
+	
+}
+
+.dropdown:hover .dropdown-menu {
+	display: block;
+}

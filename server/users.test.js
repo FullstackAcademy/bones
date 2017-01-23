@@ -32,7 +32,7 @@ describe('/api/users', () => {
         .redirects(1)
         .then(res => expect(res.body).to.contain({
           email: 'eve@interloper.com'
-        }))        
+        }))
     )
   })
 })
