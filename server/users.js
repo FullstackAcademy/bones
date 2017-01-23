@@ -3,7 +3,7 @@
 const db = require('APP/db')
 const User = db.model('users')
 
-const {mustBeLoggedIn, forbidden,} = require('./auth.filters')
+const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 
 module.exports = require('express').Router()
 	.get('/', forbidden('only admins can list users'), (req, res, next) => 
