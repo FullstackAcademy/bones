@@ -2,7 +2,7 @@
 
 const express = require('express')
 const bodyParser = require('body-parser')
-const {resolve} = require('path')
+const {resolve, join} = require('path')
 const passport = require('passport')
 const PrettyError = require('pretty-error')
 
@@ -47,6 +47,7 @@ module.exports = app
   
   // Serve static files from ../public
   .use(express.static(resolve(__dirname, '..', 'public')))
+  .use(express.static(join(__dirname, '/../node_modules/bootstrap')))
 
   // Serve our api
   .use('/api', require('./api'))
