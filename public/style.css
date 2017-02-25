@@ -1,0 +1,43 @@
+/*~~~~~~~~~HOMEPAGE~~~~~~~~~~~*/
+.home-pic {
+  color: white;
+}
+.promo{
+  background-image: url("https://www.rover.com/blog/wp-content/uploads/2014/12/hoodies-900x540.jpg");
+}
+.women{
+  background-image: url("https://s-media-cache-ak0.pinimg.com/564x/3b/42/7e/3b427e713db68779f72ebc9686ba78f8.jpg");
+}
+.men{
+  background-image: url("https://s-media-cache-ak0.pinimg.com/236x/c5/40/e2/c540e281787338d8c10c75eb2ed9254f.jpg");
+}
+.dogs{
+  background-image: url("http://i.imgur.com/yqJvm0Pl.jpg");
+}
+.kids{
+  background-image: url("https://s-media-cache-ak0.pinimg.com/originals/b8/94/39/b894391d9725e49a23bbb63e4a966d57.jpg");
+}
+/*~~~~~~~~~NAVBAR~~~~~~~~~~~*/
+.navbar {
+  background-color: white;
+  border: none;
+}
+
+.nav-bar .black-bar {
+  background-color: black;
+  border: none;
+  color: white;
+  height: 20px;
+}
+
+/*Grabbing Logo*/
+.navbar .navbar-brand {
+  color: black;
+  font-family: "HelveticaNeueW01-85Heav";
+  font-size: 2.4em;
+}
+
+/*Grabbing search bar text*/
+.navbar .navbar-text {
+  color: black;
+}
