@@ -1,5 +1,6 @@
-# Ignore all node_modules
+# Ignore all node_modules & bower_components
 node_modules/*
+bower_components
 
 # ...except the symlink to ourselves.
 !node_modules/APP
@@ -8,5 +9,21 @@ node_modules/*
 public/bundle.js
 public/bundle.js.map
 
-# NPM errors
-npm-debug.log
+# OS-generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+
+# Vim swap files
+*.sw?
+
+# IDE files
+.idea
+.vscode

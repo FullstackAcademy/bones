@@ -1,3 +1,5 @@
+'use strict'; // eslint-disable-line semi
+
 const mustBeLoggedIn = (req, res, next) => {
   if (!req.user) {
     return res.status(401).send('You must be logged in')
@@ -18,4 +20,4 @@ const forbidden = message => (req, res, next) => {
 
 // Feel free to add more filters here (suggested: something that keeps out non-admins)
 
-module.exports = {mustBeLoggedIn, selfOnly, forbidden,}
+module.exports = {mustBeLoggedIn, selfOnly, forbidden}

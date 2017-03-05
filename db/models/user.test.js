@@ -1,4 +1,4 @@
-'use strict'
+'use strict'; // eslint-disable-line semi
 
 const db = require('APP/db')
 const User = require('./user')

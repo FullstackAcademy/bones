@@ -1,4 +1,4 @@
-'use strict'
+'use strict'; // eslint-disable-line semi
 
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -22,7 +22,7 @@ if (!pkg.isProduction && !pkg.isTesting) {
 }
 
 // Pretty error prints errors all pretty.
-const prettyError = new PrettyError();
+const prettyError = new PrettyError()
 
 // Skip events.js and http.js and similar core node files.
 prettyError.skipNodeFiles()
@@ -33,7 +33,7 @@ prettyError.skipPackage('express')
 module.exports = app
   // Session middleware - compared to express-session (which is what's used in the Auther workshop), cookie-session stores sessions in a cookie, rather than some other type of session store.
   // Cookie-session docs: https://www.npmjs.com/package/cookie-session
-  .use(require('cookie-session') ({
+  .use(require('cookie-session')({
     name: 'session',
     keys: [process.env.SESSION_SECRET || 'an insecure secret key'],
   }))
