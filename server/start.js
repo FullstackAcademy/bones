@@ -1,5 +1,6 @@
 'use strict'
 
+const db = require('APP/db')
 const express = require('express')
 const bodyParser = require('body-parser')
 const {resolve} = require('path')
@@ -68,16 +69,21 @@ if (module === require.main) {
   // Start listening only if we're the main module.
   //
   // https://nodejs.org/api/modules.html#modules_accessing_the_main_module
-  const server = app.listen(
-    process.env.PORT || 1337,
-    () => {
-      console.log(`--- Started HTTP Server for ${pkg.name} ---`)
-      const { address, port } = server.address()
-      const host = address === '::' ? 'localhost' : address
-      const urlSafeHost = host.includes(':') ? `[${host}]` : host
-      console.log(`Listening on http://${urlSafeHost}:${port}`)
-    }
-  )
+  db.didSync.then(() => {
+    const server = app.listen(
+      process.env.PORT || 1337,
+      () => {
+        console.log(`--- Started HTTP Server for ${pkg.name} ---`)
+        const { address, port } = server.address()
+        const host = address === '::' ? 'localhost' : address
+        const urlSafeHost = host.includes(':') ? `[${host}]` : host
+        console.log(`Listening on http://${urlSafeHost}:${port}`)
+      }
+    )
+  })
+  .catch(err => {
+    console.error('Error starting server:', err)
+  })
 }
 
 // This check on line 64 is only starting the server if this file is being run directly by Node, and not required by another file.
