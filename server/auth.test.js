@@ -1,3 +1,5 @@
+'use strict'; // eslint-disable-line semi
+
 const request = require('supertest')
 const {expect} = require('chai')
 const db = require('APP/db')

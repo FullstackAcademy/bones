@@ -33,7 +33,7 @@ function makeAppSymlink() {
   console.log(`Linking '${appLink}' to '..'`)
   try {
     // fs.unlinkSync docs: https://nodejs.org/api/fs.html#fs_fs_unlinksync_path
-    try { fs.unlinkSync(appLink) } catch(swallowed) { }
+    try { fs.unlinkSync(appLink) } catch (swallowed) { } // eslint-disable-line no-empty
     // fs.symlinkSync docs: https://nodejs.org/api/fs.html#fs_fs_symlinksync_target_path_type
     const linkType = process.platform === 'win32' ? 'junction' : 'dir'
     fs.symlinkSync('..', appLink, linkType)

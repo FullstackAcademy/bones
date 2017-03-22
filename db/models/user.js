@@ -1,4 +1,5 @@
-'use strict'
+'use strict'; // eslint-disable-line semi
+/* eslint-disable camelcase */
 
 // bcrypt docs: https://www.npmjs.com/package/bcrypt
 const bcrypt = require('bcryptjs')
@@ -19,19 +20,20 @@ const User = db.define('users', {
   password_digest: Sequelize.STRING, // This column stores the hashed password in the DB, via the beforeCreate/beforeUpdate hooks
 	password: Sequelize.VIRTUAL // Note that this is a virtual, and not actually stored in DB
 }, {
-	indexes: [{fields: ['email'], unique: true,}],
+	indexes: [{fields: ['email'], unique: true}],
   hooks: {
     beforeCreate: setEmailAndPassword,
     beforeUpdate: setEmailAndPassword,
   },
   instanceMethods: {
     // This method is a Promisified bcrypt.compare
-    authenticate(plaintext) {
+    authenticate (plaintext) {
       return new Promise((resolve, reject) =>
-        bcrypt.compare(plaintext, this.password_digest,
-          (err, result) =>
-            err ? reject(err) : resolve(result))
-        )
+        bcrypt.compare(plaintext, this.password_digest, (err, result) => {
+          if (err) reject(err)
+          else resolve(result)
+        })
+      )
     }
   }
 })

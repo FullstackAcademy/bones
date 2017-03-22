@@ -1,4 +1,4 @@
-'use strict'
+'use strict'; // eslint-disable-line semi
 
 const app = require('APP')
 const debug = require('debug')(`${app.name}:oauth`)
@@ -24,47 +24,43 @@ const OAuth = db.define('oauths', {
   // Further reading on indexes:
   // 1. Sequelize and indexes: http://docs.sequelizejs.com/en/2.0/docs/models-definition/#indexes
   // 2. Postgres documentation: https://www.postgresql.org/docs/9.1/static/indexes.html
-	indexes: [{fields: ['uid'], unique: true,}],
+	indexes: [{fields: ['uid'], unique: true}],
 })
 
 // OAuth.V2 is a default argument for the OAuth.setupStrategy method - it's our callback function that will execute when the user has successfully logged in
-OAuth.V2 = (accessToken, refreshToken, profile, done) =>
-  OAuth.findOrCreate({
-    where: {
-      provider: profile.provider,
-      uid: profile.id,
-    }
-  })
-  .spread(oauth => {
+OAuth.V2 = async function (accessToken, refreshToken, profile, done) {
+  try {
+
     debug(profile)
     debug('provider:%s will log in user:{name=%s uid=%s}',
       profile.provider,
       profile.displayName,
       profile.id
     )
+    const [oauth] = await OAuth.findOrCreate({
+      where: {
+        provider: profile.provider,
+        uid: profile.id,
+      }
+    })
     oauth.profileJson = profile
     oauth.accessToken = accessToken
 
-    // db.Promise.props is a Bluebird.js method; basically like "all" but for an object whose properties might contain promises.
-    // Docs: http://bluebirdjs.com/docs/api/promise.props.html
-    return db.Promise.props({
-      oauth,
-      user: oauth.getUser(),
-      _saveProfile: oauth.save(),
-    })
-  })
-  .then(({ oauth, user }) => user ||
-    User.create({
+    const [user] = await Promise.all([oauth.getUser(), oauth.save()])
+
+    if (user) return done(null, user)
+
+    const createdUser = await User.create({
       name: profile.displayName,
     })
-    .then(user => db.Promise.props({
-      user,
-      _setOauthUser: oauth.setUser(user)
-    }))
-    .then(({user}) => user)
-  )
-  .then(user => done(null, user))
-  .catch(done)
+    await oauth.setUser(createdUser)
+
+    done(null, createdUser)
+
+  } catch (err) {
+    done(err)
+  }
+}
 
 // setupStrategy is a wrapper around passport.use, and is called in authentication routes in server/auth.js
 OAuth.setupStrategy =
@@ -72,7 +68,7 @@ OAuth.setupStrategy =
   provider,
   strategy,
   config,
-  oauth=OAuth.V2,
+  oauth = OAuth.V2,
   passport
 }) => {
   const undefinedKeys = Object.keys(config)
@@ -88,7 +84,7 @@ OAuth.setupStrategy =
 
   debug('initializing provider:%s', provider)
 
-  passport.use(new strategy(config, oauth))
+  passport.use(new strategy(config, oauth)) // eslint-disable-line new-cap
 }
 
 module.exports = OAuth

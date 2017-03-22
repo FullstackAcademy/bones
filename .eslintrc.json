@@ -1,0 +1,9 @@
+{
+  "extends": "fullstack",
+  "parser": "babel-eslint",
+  "root": true,
+  "rules": {
+    "semi": [1, "never"],
+    "react/prop-types": 0
+  }
+}
