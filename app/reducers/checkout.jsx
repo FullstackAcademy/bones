@@ -28,11 +28,10 @@ export function createBillingInfo(cardNumber, expDate, ccvNumber, address, city,
 		})
 		.then(res => res.data)
 		.then(Bill => {
-			const action = createBill(Bill)
-			dispatch(action)
+			dispatch(createBill(Bill))
 		})
 		.catch(err => {
-			console.error(err)
+			console.error(err) //can we use a more generalized logger?
 		})
 	}
 }
@@ -48,12 +47,13 @@ export function createBillReducer (prevState=initialState, action) {
 	const newState = Object.assign({}, prevState)
 
 	switch(action.type) {
-      
-		case UPDATE_BILLING: 
+
+		case UPDATE_BILLING:
 			newState.currentBill = action.bill
 			break
-		default: 
-        
+
+		default:
+
 			return prevState
 	}
 	return newState

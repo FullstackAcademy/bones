@@ -6,6 +6,7 @@ import { createBillingInfo } from '../reducers/checkout'
 export class Checkout extends React.Component {
   constructor() {
     super()
+    //We have no reason to maintain this state right now.
     this.state = {
       cardNumber: '',
       expDate: '',
@@ -26,6 +27,7 @@ export class Checkout extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
+    //Why not grab values from event instead of state
     const thunk = createBillingInfo(this.state.cardNumber, this.state.expDate, this.state.ccvNumber, this.state.address, this.state.city, this.state.state, this.state.zipCode)
     store.dispatch(thunk)
   }

@@ -22,9 +22,9 @@ const initialCatState = [];
 
 export const recCatReducer = (newState = initialCatState, action) => {
   switch (action.type) {
-  case RECEIVE_CATEGORIES:
-    return action.categories.slice(0);
-  }
+    case RECEIVE_CATEGORIES:
+      return action.categories.slice(0);//???
+    }
   return newState
 }
 
@@ -49,7 +49,7 @@ const initialProdState = [];
 export const recProdReducer = (newState = initialCatState, action) => {
   switch (action.type) {
   case RECEIVE_PRODUCTS:
-    return action.products.slice(0);
+    return action.products.slice(0);//???
   }
   return newState
 }

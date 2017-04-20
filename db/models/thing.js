@@ -1,5 +1,5 @@
 'use strict'
-
+//Maybe delete this file. Adds complexity
 const {STRING} = require('sequelize')
 
 module.exports = db => db.define('things', {

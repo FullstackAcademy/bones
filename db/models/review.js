@@ -17,6 +17,6 @@ module.exports = db => db.define('reviews', {
 })
 
 module.exports.associations = (Review, {User, Product}) => {
-  Review.hasMany(User)
-  Review.hasMany(Product)
+  Review.hasMany(User)  //Foreign key on the User?
+  Review.hasMany(Product) //Foreign key on the User?
 }

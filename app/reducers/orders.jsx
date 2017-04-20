@@ -23,6 +23,8 @@ export const ordersReducer = (prevState = initialState, action) => {
 
     case ALL_ORDERS:
 
+      //Shouldn't this be in the store already? Why does it need to come through on an action?
+      //I would think a separate set orders would set it
       newState.orders = [...action.orders];
       return newState;
 

@@ -9,9 +9,11 @@ module.exports = require('express').Router()
       Order.findAll()
         .then(orders => res.json(orders))
         .catch(next))
+  //Not restful. Should ask for an ID of an order
   .get('/currentOrder',
     (req, res, next) => {
       if(req.user){
+        //Then we can findById and avoid indexing stuff below
         Order.findAll({
           where: {
             user_id: req.user.id,//we'll figure this out after OATH/figuring out passport
@@ -29,16 +31,18 @@ module.exports = require('express').Router()
     })
   .post('/currentOrder',
     (req, res, next) => {
-      let newPoO = req.body.PoO;
+      let newPoO = req.body.PoO; //poo?
 
+      //I would just not hit this route for non-authed users. Make it forbidden
+      // A separate place should handle session orders for anon users
       if(req.user){
-        Order.findAll({
+        Order.findAll({  //Could there be multiple return values?
           where: {
             user_id: req.user.id,//we'll figure this out after OATH/figuring out passport
             status: 'incomplete',
           }
         })
-        .then(orders=>orders[0].id)
+        .then(orders=>orders[0].id)  //eww. Also no response ever
         // .then(currOrderId=>)   //finish later
         .catch(next)
       }

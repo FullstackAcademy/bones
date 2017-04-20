@@ -13,9 +13,9 @@ module.exports = require('express').Router()
     (req, res, next) =>
       Billing.create(req.body)
         .then(createdBill => res.json(createdBill))
-        .catch(next))
+        .catch(next)) //Send 201
   .get('/:id',
     (req, res, next) =>
       Billing.findById(req.params.id)
       .then(singleBill => res.json(singleBill))
-      .catch(next))
+      .catch(next)) //good! you caught them

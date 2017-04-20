@@ -12,7 +12,7 @@ const Cart = (props) => {
   // (or the array of products that is the value of the session.currentOrder)
 
 
-
+//Is this seed info? Why would an array of orders been the currentOrder(which is singular?)
   let currentOrder=[
     {price: null, qty: 1, product_id: 3, order_id: null, associatedProduct: {id: 3, title: 'Jeremy Lin Signed basketball', description: 'Signed by the best 3 week flash in the pan wonder in basketball history', price: 1000000, inventory: 2, imageUrl: 'http://assets.nydailynews.com/polopoly_fs/1.1019747.1330898515!/img/httpImage/image.jpg_gen/derivatives/gallery_1200/10682257.jpg'} },//session order will have a null order_id
     {price: null, qty: 2, product_id: 1, order_id: null, associatedProduct: {id: 1, title: 'Lebrrn', description: 'jersey for cavs bandwagon fans', price: 1, inventory: 100, imageUrl: 'https://cavs-staging-cavaiersholdings.netdna-ssl.com/content/images/thumbs/0020957_23-lebron-james-2nd-alt-swingman-jersey_415.jpeg'} }//lebron jersey
@@ -30,6 +30,7 @@ const Cart = (props) => {
       <div className="list-group">
       {
         currentOrder && currentOrder.map(singleOrder => (
+          //The col-xs-4 should be handled by the parent. Limits versatility
             <div className="col-xs-4" key={ singleOrder.associatedProduct.id } >
               <Link className="thumbnail" to={`/products/${singleOrder.associatedProduct.id}`} >
                 <div className="resizeLrg">
@@ -52,5 +53,5 @@ const Cart = (props) => {
 const mapState = ({ currentOrder }) => ({ currentOrder });// store.getState().categories !!  ... that is passed into categories
 
 const mapDispatch = {};
-
+//null works for mapDispatch
 export default connect(mapState, mapDispatch)(Cart);

@@ -8,8 +8,8 @@ console.log('@Categories Route')
 module.exports = require('express').Router()
   .get('/',
     (req, res, next) => {
-      console.log('req.user==========', req.user)
-      return Category.findAll()
+      console.log('req.user==========', req.user) //Don't commit logs
+      return Category.findAll() //return??
         .then(categories => res.json(categories))
         .catch(next)})
 

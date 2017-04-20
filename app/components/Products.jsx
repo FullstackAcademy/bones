@@ -12,6 +12,7 @@ const Products = (props) => {
       <div className="row">
       {
         products && products.map(product => {
+          //filter maybe?
           if(product.category_id === currCategory_id) {
             return (
             <div className="col-xs-4" key={ product.id }>
