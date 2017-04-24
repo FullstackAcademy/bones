@@ -7,6 +7,8 @@ const {resolve} = require('path')
 const passport = require('passport')
 const PrettyError = require('pretty-error')
 const finalHandler = require('finalhandler')
+const db = require('APP/db')
+// console.log(db);
 // PrettyError docs: https://www.npmjs.com/package/pretty-error
 
 // Bones has a symlink from node_modules/APP to the root of the app.
@@ -80,16 +82,19 @@ if (module === require.main) {
   // Start listening only if we're the main module.
   //
   // https://nodejs.org/api/modules.html#modules_accessing_the_main_module
-  const server = app.listen(
-    pkg.port,
-    () => {
-      console.log(`--- Started HTTP Server for ${pkg.name} ---`)
-      const { address, port } = server.address()
-      const host = address === '::' ? 'localhost' : address
-      const urlSafeHost = host.includes(':') ? `[${host}]` : host
-      console.log(`Listening on http://${urlSafeHost}:${port}`)
-    }
-  )
+  db.didSync
+  .then(function() {
+    const server = app.listen(
+      pkg.port,
+      () => {
+        console.log(`--- Started HTTP Server for ${pkg.name} ---`)
+        const { address, port } = server.address()
+        const host = address === '::' ? 'localhost' : address
+        const urlSafeHost = host.includes(':') ? `[${host}]` : host
+        console.log(`Listening on http://${urlSafeHost}:${port}`)
+      }
+    )
+  })
 }
 
 // This check on line 64 is only starting the server if this file is being run directly by Node, and not required by another file.
