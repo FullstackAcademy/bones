@@ -23,6 +23,17 @@ module.exports = require('express').Router()
       User.create(req.body)
       .then(user => res.status(201).json(user))
       .catch(next))
+  .post('/login', function (req, res, next) {
+    console.log('req.body================================', req.body)
+    User.findOne({
+      where: {email: req.body.email, password_digest: req.body.password}
+    })
+    .then(user => {
+      console.log('user from database in server response=======================', user)
+      res.json(user)
+    })
+    .catch(next)
+  })
   .get('/:id',
     mustBeLoggedIn,
     (req, res, next) =>

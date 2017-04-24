@@ -1,0 +1,71 @@
+html {
+  background-color: #f8f8f8; }
+
+body {
+  background: repeating-linear-gradient(45deg, #e3e3e3 0px, #e3e3e3 10px, #ccc 1px, #ccc 11px); }
+
+.resizeLrg {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /*  this line and above, will ALWAYS make the div into a square */
+  overflow: hidden;
+  /*height: 250px !important;*/
+}
+
+.resizeLrg > img { /* GO OVER THIS LATER */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* This line and the one above will ALWAYS center any image inside the resizeLrg div  */
+  width: 100%
+}
+
+.resizeMed {
+  position: relative;
+  width: 80%;
+  padding-top: 80%; /*  this line and above, will ALWAYS make the div into a square */
+  overflow: hidden;
+  /*height: 250px !important;*/
+}
+
+.resizeMed > img { /* GO OVER THIS LATER */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* This line and the one above will ALWAYS center any image inside the resizeLrg div  */
+  width: 100%
+}
+
+.navbar {
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px dotted #777; }
+  .navbar .navbar-nav a.active {
+    background: transparent;
+    position: relative; }
+    .navbar .navbar-nav a.active:hover, .navbar .navbar-nav a.active:focus {
+      background: transparent; }
+    .navbar .navbar-nav a.active::before {
+      position: absolute;
+      bottom: 0;
+      content: '';
+      left: calc(50% - 0.8em);
+      border-bottom: 0.6em solid #555;
+      border-right: 0.8em solid transparent;
+      border-left: 0.8em solid transparent; }
+  .navbar .navbar-brand {
+    padding-top: 10px;
+    padding-bottom: 10px; }
+    .navbar .navbar-brand img {
+      height: 100%; }
+
+.inline {
+  display: inline-block;
+}
+
+@media (max-width: 767px) {
+  .navbar .navbar-nav a.active::before {
+    left: 0;
+    bottom: calc(50% - 0.8em);
+    border-left: 0.6em solid #555;
+    border-bottom: 0.8em solid transparent;
+    border-top: 0.8em solid transparent;
+    border-right: none; } }
