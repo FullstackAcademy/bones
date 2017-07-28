@@ -1,5 +1,5 @@
 {
-  "name": "__BONES_NEEDS_A_NAME__",
+  "name": "katedeploy",
   "version": "0.0.1",
   "description": "A happy little skeleton.",
   "main": "index.js",
@@ -22,10 +22,8 @@
     "test": "mocha --compilers js:babel-register --require babel-polyfill --watch-extensions js,jsx app/**/*.test.js app/**/*.test.jsx server/**/*.test.js db/**/*.test.js",
     "test-watch": "npm run test -- --watch --reporter=min",
     "seed": "node db/seed.js",
-    "deploy-heroku": "bin/deploy-heroku.sh",
     "lint": "esw . --ignore-path .gitignore --ext '.js,.jsx'",
-    "lint-watch": "npm run lint -- -w",
-    "prepush": "npm run lint && npm run test"
+    "lint-watch": "npm run lint -- -w"
   },
   "repository": {
     "type": "git",
@@ -66,7 +64,7 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
-    "react-router": "^3.0.0",
+    "react-router-dom": "^4.1.2",
     "redux": "^3.6.0",
     "redux-devtools-extension": "^2.13.0",
     "redux-logger": "^2.7.0",
