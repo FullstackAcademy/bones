@@ -10,3 +10,22 @@ public/bundle.js.map
 
 # NPM errors
 npm-debug.log
+
+# Temp caches
+.eslintcache
+
+# OS-generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Vim swap files
+*.sw?
+
+# IDE files
+.idea
+.vscode
