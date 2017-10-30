@@ -8,7 +8,7 @@
 import 'babel-polyfill'
 
 import React from 'react'
-import {Router, Route, IndexRedirect, browserHistory} from 'react-router'
+import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 import {render} from 'react-dom'
 import {connect, Provider} from 'react-redux'
 
@@ -26,18 +26,20 @@ const ExampleApp = connect(
       <nav>
         {user ? <WhoAmI/> : <Login/>}
       </nav>
-      {children}
+      <main>
+        <Switch>
+          <Route path="/jokes" component={Jokes} />
+          <Redirect exact from="/" to="/jokes" />
+          <Route component={NotFound} />
+        </Switch>
+      </main>
     </div>
 )
 
 render(
   <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path="/" component={ExampleApp}>
-        <IndexRedirect to="/jokes" />
-        <Route path="/jokes" component={Jokes} />
-      </Route>
-      <Route path='*' component={NotFound} />
+    <Router>
+      <ExampleApp />
     </Router>
   </Provider>,
   document.getElementById('main')
